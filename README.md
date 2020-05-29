@@ -27,7 +27,7 @@
 
 ## About <a name = "about"></a>
 
-The data used by Stock is directly downloaded from [Google Trends](https://trends.google.com). The concept for this project came from this [research (PDF)](https://www.nature.com/articles/srep01684.pdf). In this research was found that the search volume for certain (financial) words are linked to the stock price of the Dow Jones Industrial Average stock, and can in most cases predict a dip in the market. The purpose of this project is to combine this research with machine learning.
+The data used by Stock is directly downloaded from [Google Trends](https://trends.google.com). The concept for this project came from this [research (PDF)](https://www.nature.com/articles/srep01684.pdf). In this research was found that the search volume for certain (financial) words are linked to the stock price of the Dow Jones Industrial Average stock price, and can in most cases predict a dip in the market. The purpose of this project is to combine this research with machine learning.
 
 ## Data <a name = "data"></a>
 
@@ -39,14 +39,14 @@ All data on Google Trends is relative to eachother within one timeframe (0-100),
 
 To get all the data relative to eachother, instead of only within it's 6-month increment. I had to merge them together based on weekly data. However, the weekly data is only available in 5-year increments, so I had to merge these 5-year increments together based on the monthly data, which is available for timespan needed for this project. To merge all the 6-month, and 5-year increments, I computed the percentage change of each data point within it's respective increment. Afterwards I got one data point (from the weekly data) per increment, and computed the missing days by applying the percentage change to the provided data point.
 
-#### Example <a name = "example_merge></a>
+#### Example <a name = "example_merge"></a>
 
 An example for the search term 'debt' - 'debt' is the best search term to predict market change - in the timespan 2007-2009:
 
 Before adjustments:
 
 <p align="center">
-  <img src="images/graphs/example_unadjusted_graph.svg" width=400>
+  <img src="images/graphs/example_unadjusted_graph.svg" width=600>
 </p>
 
 _The black vertical lines indicate the edges of the 6-month increments_
@@ -54,11 +54,11 @@ _The black vertical lines indicate the edges of the 6-month increments_
 After adjustments:
 
 <p align="center">
-  <img src="images/grapgs/example_interpolated_graph.svg" width=400>
+  <img src="images/graphs/example_interpolated_graph.svg" width=600>
 </p>
 
 Weekly data points:
 
 <p align="center">
-  <img src="images/graphs/exmaple_actual_weekly_graph.svg" width=400>
+  <img src="images/graphs/example_actual_weekly_graph.svg" width=600>
 </p>
