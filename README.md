@@ -23,9 +23,14 @@
 - [Data](#data)
   - [Data Collection](#data_collection)
   - [Data Visualization](#data_visualization)
+    - [Correlation](#correlation)
+    - [Adjusted](#adjusted)
   - [Restrictions](#restrictions)
   - [Method](#method)
     - [Example](#example_merge)
+      - [Before Adjustments](#before_adjustments)
+      - [After Adjustments](#after_adjustments)
+      - [Weekly](#weekly)
 
 ## About <a name = "about"></a>
 
@@ -51,6 +56,7 @@ Two datasets were needed for this project; the Google Trends daily data for a sp
 
 ### Data Visualization <a name = "data_visualization"></a>
 
+#### Correlation <a name = "correlation"></a>
 To prove that there indeed is a correlation between Google Trends data (e.g. 'debt'), and stock prices (e.g. Dow Jones Industrial Average). I created a graph plotting these two against eachother:
 
 <p align="center">
@@ -60,6 +66,8 @@ To prove that there indeed is a correlation between Google Trends data (e.g. 'de
 <p align="center">
   The red indicates a spike in amount of searches, and the green indicates a dip in the stock market.
 </p>
+
+#### Adjusted <a name = "adjusted"></a>
 
 After all adjustments of the data to eventually get daily data - which is actually relative to eachother - the data looks like this:
 
@@ -79,7 +87,7 @@ To get all the data relative to eachother, instead of only within it's 6-month i
 
 An example for the search term 'debt' - 'debt' is the best search term to predict market change - in the timespan 2007-2009:
 
-Before adjustments:
+#### Before adjustments <a name = "before_adjustments"></a>
 
 <p align="center">
   <img src="images/graphs/example_unadjusted_graph.svg" width=600>
@@ -89,13 +97,13 @@ Before adjustments:
   The black vertical lines indicate the edges of the 6-month increments.
 </p>
 
-After adjustments:
+#### After adjustments <a name = "after_adjustments"</a>
 
 <p align="center">
   <img src="images/graphs/example_interpolated_graph.svg" width=600>
 </p>
 
-Weekly data points:
+#### Weekly <a name = "weekly"></a>
 
 <p align="center">
   <img src="images/graphs/example_actual_weekly_graph.svg" width=600>
