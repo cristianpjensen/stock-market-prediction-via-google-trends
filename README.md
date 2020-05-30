@@ -21,6 +21,7 @@
 ## Table of Contents
 - [About](#about)
 - [Data](#data)
+  - [Data Collection](#data_collection)
   - [Restrictions](#restrictions)
   - [The Merge](#the_merge)
     - [Example](#example_merge)
@@ -42,6 +43,8 @@ This project is currently under development. All data has been collected and cle
 > TODO
 
 ## Data <a name = "data"></a>
+
+### Data Collection <a name = "data_collection"></a>
 
 ### Restrictions <a name = "restrictions"></a>
 
