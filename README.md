@@ -22,10 +22,10 @@
 - [About](#about)
 - [Data](#data)
   - [Data Collection](#data_collection)
+  - [Data Visualization](#data_visualization)
   - [Restrictions](#restrictions)
   - [Method](#method)
     - [Example](#example_merge)
-  - [Data Visualization](#data_visualization)
 
 ## About <a name = "about"></a>
 
@@ -48,6 +48,24 @@ This project is currently under development. All data has been collected and cle
 ### Data Collection <a name = "data_collection"></a>
 
 Two datasets were needed for this project; the Google Trends daily data for a specific keyword, and the stock price daily data for a specific ticker. To collect the Google Trends daily data, you have to download all 6-month increments, 5-year increments, and 2004-present within the 2004-2020 timespan. All this data will eventually be adjusted to be relative to eachother, instead of only within it's respective timepsan. To collect the stock price daily data for a specific ticker you want to predict, you have to download it from a website like [Yahoo Finance](https://finance.yahoo.com), where you can download the historical data of any ticker.
+
+### Data Visualization <a name = "data_visualization"></a>
+
+To prove that there indeed is a correlation between Google Trends data (e.g. 'debt'), and stock prices (e.g. Dow Jones Industrial Average). I created a graph plotting these two against eachother:
+
+<p align="center">
+  <img src="images/graphs/debt_vs_djia.svg" width=600>
+</p>
+
+<p align="center">
+  The red indicates a spike in amount of searches, and the green indicates a dip in the stock market.
+</p>
+
+After all adjustments of the data to eventually get daily data - which is actually relative to eachother - the data looks like this:
+
+<p align="center">
+  <img src="images/graphs/interpolated_daily.svg" width=600>
+</p>
 
 ### Restrictions <a name = "restrictions"></a>
 
@@ -83,20 +101,3 @@ Weekly data points:
   <img src="images/graphs/example_actual_weekly_graph.svg" width=600>
 </p>
 
-### Data Visualization <a name = "data_visualization"></a>
-
-To prove that there indeed is a correlation between Google Trends data (e.g. 'debt'), and stock prices (e.g. Dow Jones Industrial Average). I created a graph plotting these two against eachother:
-
-<p align="center">
-  <img src="images/graphs/debt_vs_djia.svg" width=600>
-</p>
-
-<p align="center">
-  The red indicates a spike in amount of searches, and the green indicates a dip in the stock market.
-</p>
-
-After all adjustments of the data to eventually get daily data - which is actually relative to eachother - the data looks like this:
-
-<p align="center">
-  <img src="images/graphs/interpolated_daily.svg" width=600>
-</p>
