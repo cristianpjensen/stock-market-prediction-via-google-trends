@@ -55,8 +55,11 @@ An example for the search term 'debt' - 'debt' is the best search term to predic
 
 Before adjustments:
 
-<p align="center" style="font-size: 10px; color: #808080">
+<p align="center">
   <img src="images/graphs/example_unadjusted_graph.svg" width=600>
+</p>
+
+<p align="center">
   The black vertical lines indicate the edges of the 6-month increments.
 </p>
 
