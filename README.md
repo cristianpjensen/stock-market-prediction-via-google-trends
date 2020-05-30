@@ -49,9 +49,9 @@ Before adjustments:
   <img src="images/graphs/example_unadjusted_graph.svg" width=600>
 </p>
 
-<sub align="center">
+<p align="center">
   The black vertical lines indicate the edges of the 6-month increments.
-</sub>
+</p>
 
 After adjustments:
 
