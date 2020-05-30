@@ -81,7 +81,7 @@ After all adjustments of the data to eventually get daily data - which is actual
 
 ### Restrictions <a name = "restrictions"></a>
 
-All data on Google Trends is relative to eachother within one timeframe (0-100), and you can only get daily data in 6-month increments, weekly data in 5-year increments, and only monthly data is provided for the entire timespan available. So to aggregate all data needed for this project was quite a challenge, and because of these restrictions aren't completely accurate, however the method I used was the only method to getting daily data over the entire timespan available (which was crucial for this project). However, I was determined to make it work.
+All data on Google Trends is relative (0-100) to eachother within one timeframe, and you can only get daily data in 6-month increments, weekly data in 5-year increments, and only monthly data is provided for the entire timespan available. So to aggregate all data needed for this project was quite a challenge, and because of these restrictions aren't completely accurate, however the method I used was the only method to getting daily data over the entire timespan available (which was crucial for this project). However, I was determined to make it work.
 
 ### Method <a name = "method"></a>
 
