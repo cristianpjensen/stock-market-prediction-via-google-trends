@@ -29,6 +29,16 @@
 
 The data used by Njord is directly downloaded from [Google Trends](https://trends.google.com). The concept for this project came from this [research (PDF)](https://www.nature.com/articles/srep01684.pdf). In this research was found that the search volume for certain (financial) words are linked to the stock price of the Dow Jones Industrial Average stock price, and can in most cases predict a dip in the market. The purpose of this project is to combine this research with machine learning.
 
+## Project Status
+
+## Installation and Setup Instructions
+
+> TODO
+
+## Reflection
+
+> TODO
+
 ## Data <a name = "data"></a>
 
 ### Restrictions <a name = "restrictions"></a>
