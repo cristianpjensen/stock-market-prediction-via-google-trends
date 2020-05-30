@@ -31,6 +31,8 @@ The data used by Njord is directly downloaded from [Google Trends](https://trend
 
 ## Project Status
 
+This project is currently under development. All data has been collected and cleaned for Njord's usage.
+
 ## Installation and Setup Instructions
 
 > TODO
@@ -74,9 +76,3 @@ Weekly data points:
 <p align="center">
   <img src="images/graphs/example_actual_weekly_graph.svg" width=600>
 </p>
-
-## Project Status
-
-## Installation and Setup Instructions
-
-## Reflection
