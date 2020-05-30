@@ -85,13 +85,17 @@ Weekly data points:
 
 ### Data Visualization <a name = "data_visualization"></a>
 
-To prove that there indeed is a correlation between Google Trends data (e.g. 'debt'), and stock prices (e.g. DJIA). I created a graph plotting these two against eachother:
+To prove that there indeed is a correlation between Google Trends data (e.g. 'debt'), and stock prices (e.g. Dow Jones Industrial Average). I created a graph plotting these two against eachother:
 
 <p align="center">
-  <img src="images/graphs/debt_vs_dji.svg" width=600>
+  <img src="images/graphs/debt_vs_djia.svg" width=600>
 </p>
 
-After all adjustments of the data to eventually get daily data, which is actually relative to eachother, the data looks like this:
+<p align="center">
+  The red indicates a spike in amount of searches, and the green indicates a dip in the stock market.
+</p>
+
+After all adjustments of the data to eventually get daily data - which is actually relative to eachother - the data looks like this:
 
 <p align="center">
   <img src="images/graphs/interpolated_daily.svg" width=600>
