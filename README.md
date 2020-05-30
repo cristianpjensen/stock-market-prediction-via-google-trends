@@ -20,6 +20,9 @@
 
 ## Table of Contents
 - [About](#about)
+- [Project Status](#project_status)
+- [Installation](#installation)
+- [Reflection](#reflection)
 - [Data](#data)
   - [Data Collection](#data_collection)
   - [Data Visualization](#data_visualization)
@@ -31,20 +34,21 @@
       - [Before Adjustments](#before_adjustments)
       - [After Adjustments](#after_adjustments)
       - [Weekly](#weekly)
+- [License](#license)
 
 ## About <a name = "about"></a>
 
 The data used by Njord is directly downloaded from [Google Trends](https://trends.google.com). The concept for this project came from this [research (PDF)](https://www.nature.com/articles/srep01684.pdf). In this research was found that the search volume for certain (financial) words are linked to the stock price of the Dow Jones Industrial Average stock price, and can in most cases predict a dip in the market. The purpose of this project is to combine this research with machine learning.
 
-## Project Status
+## Project Status <a name = "project_status"></a>
 
 This project is currently under development. All data has been collected and cleaned for Njord's usage.
 
-## Installation and Setup Instructions
+## Installation <a name = "installation"></a>
 
 > TODO
 
-## Reflection
+## Reflection <a name = "reflection"></a>
 
 > TODO
 
@@ -109,3 +113,8 @@ An example for the search term 'debt' - 'debt' is the best search term to predic
   <img src="images/graphs/example_actual_weekly_graph.svg" width=600>
 </p>
 
+## [License](/LICENSE) <a name = "license"></a>
+
+MIT License
+
+Copyright (c) 2020 Cristian Perez Jensen
