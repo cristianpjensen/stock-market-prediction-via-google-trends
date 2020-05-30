@@ -1,9 +1,9 @@
 <p align="center">
   <a href="" rel="noopener">
- <img width=200px height=200px src="https://imgur.com/r/stocks/Pq8wEPH" alt="Project logo"></a>
+ <img width=200px height=200px src="images/Njord.jpg" alt="Project logo"></a>
 </p>
 
-<h3 align="center">Stock</h3>
+<h3 align="center">Njord</h3>
 
 <div align="center">
 
@@ -14,7 +14,7 @@
 
 ---
 
-<p align="center"> Stock attempts to predict future stock prices based on Google Trends data - using a neural network.
+<p align="center"> Njord attempts to predict future stock prices based on Google Trends data - using a neural network.
     <br> 
 </p>
 
@@ -27,7 +27,7 @@
 
 ## About <a name = "about"></a>
 
-The data used by Stock is directly downloaded from [Google Trends](https://trends.google.com). The concept for this project came from this [research (PDF)](https://www.nature.com/articles/srep01684.pdf). In this research was found that the search volume for certain (financial) words are linked to the stock price of the Dow Jones Industrial Average stock price, and can in most cases predict a dip in the market. The purpose of this project is to combine this research with machine learning.
+The data used by Njord is directly downloaded from [Google Trends](https://trends.google.com). The concept for this project came from this [research (PDF)](https://www.nature.com/articles/srep01684.pdf). In this research was found that the search volume for certain (financial) words are linked to the stock price of the Dow Jones Industrial Average stock price, and can in most cases predict a dip in the market. The purpose of this project is to combine this research with machine learning.
 
 ## Data <a name = "data"></a>
 
@@ -45,11 +45,10 @@ An example for the search term 'debt' - 'debt' is the best search term to predic
 
 Before adjustments:
 
-<p align="center">
+<p align="center" style="font-size: 10px; color: #808080">
   <img src="images/graphs/example_unadjusted_graph.svg" width=600>
+  The black vertical lines indicate the edges of the 6-month increments.
 </p>
-
-_The black vertical lines indicate the edges of the 6-month increments_
 
 After adjustments:
 
@@ -62,3 +61,9 @@ Weekly data points:
 <p align="center">
   <img src="images/graphs/example_actual_weekly_graph.svg" width=600>
 </p>
+
+## Project Status
+
+## Installation and Setup Instructions
+
+## Reflection
