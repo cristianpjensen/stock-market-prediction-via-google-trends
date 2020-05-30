@@ -23,8 +23,9 @@
 - [Data](#data)
   - [Data Collection](#data_collection)
   - [Restrictions](#restrictions)
-  - [The Merge](#the_merge)
+  - [Method](#method)
     - [Example](#example_merge)
+  - [Data Visualization](#data_visualization)
 
 ## About <a name = "about"></a>
 
@@ -46,11 +47,13 @@ This project is currently under development. All data has been collected and cle
 
 ### Data Collection <a name = "data_collection"></a>
 
+Two datasets were needed for this project; the Google Trends daily data for a specific keyword, and the stock price daily data for a specific ticker. To collect the Google Trends daily data, you have to download all 6-month increments, 5-year increments, and 2004-present within the 2004-2020 timespan. All this data will eventually be adjusted to be relative to eachother, instead of only within it's respective timepsan. To collect the stock price daily data for a specific ticker you want to predict, you have to download it from a website like [Yahoo Finance](https://finance.yahoo.com), where you can download the historical data of any ticker.
+
 ### Restrictions <a name = "restrictions"></a>
 
 All data on Google Trends is relative to eachother within one timeframe (0-100), and you can only get daily data in 6-month increments, weekly data in 5-year increments, and only monthly data is provided for the entire timespan available. So to aggregate all data needed for this project was quite a challenge, and because of these restrictions aren't completely accurate, however the method I used was the only method to getting daily data over the entire timespan available (which was crucial for this project). However, I was determined to make it work.
 
-### The Merge <a name = "the_merge"></a>
+### Method <a name = "method"></a>
 
 To get all the data relative to eachother, instead of only within it's 6-month increment. I had to merge them together based on weekly data. However, the weekly data is only available in 5-year increments, so I had to merge these 5-year increments together based on the monthly data, which is available for timespan needed for this project. To merge all the 6-month, and 5-year increments, I computed the percentage change of each data point within it's respective increment. Afterwards I got one data point (from the weekly data) per increment, and computed the missing days by applying the percentage change to the provided data point.
 
@@ -78,4 +81,18 @@ Weekly data points:
 
 <p align="center">
   <img src="images/graphs/example_actual_weekly_graph.svg" width=600>
+</p>
+
+### Data Visualization <a name = "data_visualization"></a>
+
+To prove that there indeed is a correlation between Google Trends data (e.g. 'debt'), and stock prices (e.g. DJIA). I created a graph plotting these two against eachother:
+
+<p align="center">
+  <img src="images/graphs/debt_vs_dji.svg" width=600>
+</p>
+
+After all adjustments of the data to eventually get daily data, which is actually relative to eachother, the data looks like this:
+
+<p align="center">
+  <img src="images/graphs/interpolated_daily.svg" width=600>
 </p>
