@@ -97,7 +97,7 @@ An example for the search term 'debt' - 'debt' is the best search term to predic
   The black vertical lines indicate the edges of the 6-month increments.
 </p>
 
-#### After adjustments <a name = "after_adjustments"</a>
+#### After adjustments <a name = "after_adjustments"></a>
 
 <p align="center">
   <img src="images/graphs/example_interpolated_graph.svg" width=600>
