@@ -1,8 +1,10 @@
-import json
-import requests
-import sys
 import datetime
+import json
+import sys
+import os
 import urllib.request
+
+import requests
 from dateutil.relativedelta import relativedelta
 
 
@@ -35,6 +37,26 @@ def main():
 
     keyword = sys.argv[1]
 
+    try:
+        os.mkdir("data")
+    except:
+        pass
+
+    try:
+        os.mkdir(f"data/{keyword}")
+    except:
+        pass
+
+    try:
+        os.mkdir(f"data/{keyword}/{str(start_date)}_{end_date}")
+        os.mkdir(f"data/{keyword}/{str(start_date)}_{end_date}/unadjusted")
+        os.mkdir(
+            f"data/{keyword}/{str(start_date)}_{end_date}/unadjusted/daily")
+        os.mkdir(
+            f"data/{keyword}/{str(start_date)}_{end_date}/unadjusted/weekly")
+    except:
+        sys.exit("You have already collected data for that keyword in that timespan.")
+
     get_monthly(keyword, start_date, end_date)
     get_weekly(keyword, start_date, end_date)
     get_daily(keyword, start_date, end_date)
@@ -52,7 +74,7 @@ def get_daily(keyword, start_date, end_date):
 
         url = f"https://trends.google.com/trends/api/widgetdata/multiline/csv?req=%7B%22time%22%3A%22{str(start_increment)}%20{str(end_increment)}%22%2C%22resolution%22%3A%22DAY%22%2C%22locale%22%3A%22en-US%22%2C%22comparisonItem%22%3A%5B%7B%22geo%22%3A%7B%22country%22%3A%22US%22%7D%2C%22complexKeywordsRestriction%22%3A%7B%22keyword%22%3A%5B%7B%22type%22%3A%22BROAD%22%2C%22value%22%3A%22{keyword}%22%7D%5D%7D%7D%5D%2C%22requestOptions%22%3A%7B%22property%22%3A%22%22%2C%22backend%22%3A%22IZG%22%2C%22category%22%3A0%7D%7D&token={token}&tz=-120"
         urllib.request.urlretrieve(
-            url, f"data/unadjusted/daily/{index}_daily_{keyword}.csv")
+            url, f"data/{keyword}/{str(start_date)}_{str(end_date)}/unadjusted/daily/{index}_daily_{keyword}.csv")
 
         start_increment += relativedelta(months=+6)
         end_increment += relativedelta(months=+6)
@@ -75,7 +97,7 @@ def get_weekly(keyword, start_date, end_date):
 
         url = f"https://trends.google.com/trends/api/widgetdata/multiline/csv?req=%7B%22time%22%3A%22{str(start_increment)}%20{str(end_increment)}%22%2C%22resolution%22%3A%22WEEK%22%2C%22locale%22%3A%22en-US%22%2C%22comparisonItem%22%3A%5B%7B%22geo%22%3A%7B%22country%22%3A%22US%22%7D%2C%22complexKeywordsRestriction%22%3A%7B%22keyword%22%3A%5B%7B%22type%22%3A%22BROAD%22%2C%22value%22%3A%22{keyword}%22%7D%5D%7D%7D%5D%2C%22requestOptions%22%3A%7B%22property%22%3A%22%22%2C%22backend%22%3A%22IZG%22%2C%22category%22%3A0%7D%7D&token={token}&tz=-120"
         urllib.request.urlretrieve(
-            url, f"data/unadjusted/weekly/{index}_weekly_{keyword}.csv")
+            url, f"data/{keyword}/{str(start_date)}_{str(end_date)}/unadjusted/weekly/{index}_weekly_{keyword}.csv")
 
         start_increment += relativedelta(years=+5)
         end_increment += relativedelta(years=+5)
@@ -91,7 +113,8 @@ def get_monthly(keyword, start_date, end_date):
     token = get_token(keyword, f"{start_date} {end_date}")
 
     url = f"https://trends.google.com/trends/api/widgetdata/multiline/csv?req=%7B%22time%22%3A%22{str(start_date)}%20{str(end_date)}%22%2C%22resolution%22%3A%22MONTH%22%2C%22locale%22%3A%22en-US%22%2C%22comparisonItem%22%3A%5B%7B%22geo%22%3A%7B%22country%22%3A%22US%22%7D%2C%22complexKeywordsRestriction%22%3A%7B%22keyword%22%3A%5B%7B%22type%22%3A%22BROAD%22%2C%22value%22%3A%22{keyword}%22%7D%5D%7D%7D%5D%2C%22requestOptions%22%3A%7B%22property%22%3A%22%22%2C%22backend%22%3A%22IZG%22%2C%22category%22%3A0%7D%7D&token={token}&tz=-120"
-    urllib.request.urlretrieve(url, f"data/unadjusted/monthly_{keyword}.csv")
+    urllib.request.urlretrieve(
+        url, f"data/{keyword}/{str(start_date)}_{str(end_date)}/unadjusted/monthly_{keyword}.csv")
 
 
 def get_token(keyword, timespan):
