@@ -19,14 +19,40 @@ def main():
     else:
         end_date = sys.argv[3]
 
+    weekly = list()
+    daily = list()
+
+    # Read data into memory.
     try:
         monthly = pd.read_csv(
             f"data/{keyword}/{start_date}_{end_date}/unadjusted/monthly_{keyword}.csv")
+
+        i = 0
+        while True:
+            try:
+                weekly.append(pd.read_csv(
+                    f"data/{keyword}/{start_date}_{end_date}/unadjusted/weekly/{i}_weekly_{keyword}.csv"))
+            except:
+                break
+
+            i += 1
+
+        i = 0
+        while True:
+            try:
+                daily.append(pd.read_csv(
+                    f"data/{keyword}/{start_date}_{end_date}/unadjusted/daily/{i}_daily_{keyword}.csv"))
+            except:
+                break
+
+            i += 1
     except:
         sys.exit(
-            f"First run data_collector.py. (python3 data_collector.py {sys.argv[1]} {sys.argv[2]} {sys.argv[3]}")
+            f"First run data_collector.py (python3 data_collector.py {sys.argv[1]} {sys.argv[2]} {sys.argv[3]}).")
 
-    print(monthly.name())
+    print(monthly)
+    print(weekly)
+    print(daily)
 
 
 def adjust_weekly():
