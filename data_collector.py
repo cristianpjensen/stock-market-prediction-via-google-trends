@@ -84,12 +84,13 @@ def get_daily(keyword, start_date, end_date):
         # Remove first two lines.
         with open(f"data/{keyword}/{str(start_date)}_{str(end_date)}/unadjusted/daily/temp.csv", "r") as f:
             with open(f"data/{keyword}/{str(start_date)}_{str(end_date)}/unadjusted/daily/{index}_daily_{keyword}.csv", "w") as f1:
-                next(f)
-                next(f)
-                next(f)
+                for _ in range(3):
+                    next(f)
                 f1.write(HEADER)
-                for line in f:
-                    f1.write(line)
+                lines = f.readlines()
+                if end_increment < end_date:
+                    lines.pop()
+                f1.writelines(lines)
 
         os.remove(
             f"data/{keyword}/{str(start_date)}_{str(end_date)}/unadjusted/daily/temp.csv")
@@ -120,9 +121,8 @@ def get_weekly(keyword, start_date, end_date):
         # Remove first two lines.
         with open(f"data/{keyword}/{str(start_date)}_{str(end_date)}/unadjusted/weekly/temp.csv", "r") as f:
             with open(f"data/{keyword}/{str(start_date)}_{str(end_date)}/unadjusted/weekly/{index}_weekly_{keyword}.csv", "w") as f1:
-                next(f)
-                next(f)
-                next(f)
+                for _ in range(3):
+                    next(f)
                 f1.write(HEADER)
                 for line in f:
                     f1.write(line)
@@ -150,9 +150,8 @@ def get_monthly(keyword, start_date, end_date):
     # Remove first two line
     with open(f"data/{keyword}/{str(start_date)}_{str(end_date)}/unadjusted/temp.csv", "r") as f:
         with open(f"data/{keyword}/{str(start_date)}_{str(end_date)}/unadjusted/monthly_{keyword}.csv", "w") as f1:
-            next(f)
-            next(f)
-            next(f)
+            for _ in range(3):
+                next(f)
             f1.write(HEADER)
             for line in f:
                 f1.write(line)
