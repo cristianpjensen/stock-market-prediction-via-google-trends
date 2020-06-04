@@ -8,7 +8,7 @@ import requests
 from dateutil.relativedelta import relativedelta
 
 
-HEADER = "Date, Relative Frequency\n"
+HEADER = "date,relative_frequency\n"
 
 
 def main():
