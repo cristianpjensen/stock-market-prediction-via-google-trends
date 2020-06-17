@@ -129,5 +129,4 @@ dmypy.json
 .pyre/
 
 .vscode/
-try.py
-example_data/
+data/
