@@ -1,13 +1,13 @@
 import datetime
 import json
-import sys
 import os
+import random
+import sys
+from time import sleep
 
+import pandas as pd
 import requests
 from dateutil.relativedelta import relativedelta
-import pandas as pd
-
-from time import sleep
 
 
 class Trends():
@@ -36,7 +36,10 @@ class Trends():
                 if os.path.exists(f"data/weekly/{self.keyword_file}.csv") and os.path.exists(f"data/daily/{self.keyword_file}.csv"):
                     continue
 
+                i = 0
                 while True:
+                    if i >= 3:
+                        sys.exit("Too many errors.")
                     try:
                         print(self.keyword)
 
@@ -49,12 +52,14 @@ class Trends():
 
                         self.download()
 
-                        sleep(60)
+                        sleep(90)
 
                         break
                     except:
+                        i += 1
+
                         print("Error")
-                        sleep(60)
+                        sleep(120)
 
     def pull_daily(self):
         """Pulls the daily data of the keyword specified from Google Trends."""
@@ -143,6 +148,7 @@ class Trends():
         Licensed under the Apache license, version 2.0.
         Changes made by github.com/cristianpjensen to fit Njord's use case.
         """
+        sleep(random.randint(0, 2))
 
         session = requests.session()
 
@@ -293,7 +299,7 @@ class Trends():
 
     def download(self):
         """Download the daily and weekly data into CSV-files."""
-        print("Downloading...")
+        print("Converting to CSV format...")
 
         self.weekly.to_csv(f"data/weekly/{self.keyword_file}.csv", index=False)
         self.daily.to_csv(f"data/daily/{self.keyword_file}.csv", index=False)
