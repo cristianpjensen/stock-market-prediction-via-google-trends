@@ -14,7 +14,7 @@
 
 ---
 
-<p align="center"> Njord attempts to predict future stock prices based on Google Trends data, using a neural network.
+<p align="center"> Njord attempts to predict future stock prices based on Google Trends data—using a neural network.
     <br> 
 </p>
 
