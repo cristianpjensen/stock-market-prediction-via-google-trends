@@ -1,0 +1,18 @@
+h3 {
+  font-family: "gandhi_serifbold";
+  color: white;
+  text-align: center;
+}
+
+p {
+  font-family: "gandhi_serifregular";
+  color: white;
+}
+
+.container {
+  height: 1000px;
+  background-color: black;
+  padding: 40px;
+  width: 30%;
+  margin: 0 auto;
+}

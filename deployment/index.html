@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300&display=swap" rel="stylesheet">
+    <link href="//db.onlinewebfonts.com/c/0d39a4e3c36c494c84e2c38618bfed33?family=Publico+Text+Web" rel="stylesheet" type="text/css"/>
+    <link href="//db.onlinewebfonts.com/c/e0ad94902a160013fafd2403e5e638cb?family=Canela" rel="stylesheet" type="text/css"/>
+
+    <script src="https://d3js.org/d3.v4.js"></script>
+    <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+
+    <meta
+      name="description"
+      content="Google Trends data has the ability to forecast Stock Market movements - this is used by a Machine Learning model."
+    />
+    <meta
+      name="new_keywords"
+      content="google trends, machine learning, artificial intelligence, data, data science"
+    />
+
+    <meta
+      property="og:title"
+      content="Njord - Stock Market Prediction via Google Trends"
+    />
+    <meta property="og:url" content="TODO" />
+    <!-- TODO -->
+    <meta
+      property="og:description"
+      content="Njord attempts to predict future stock prices based on Google Trends data - using machine learning."
+    />
+    <meta property="og:type" content="article" />
+    <meta property="og:locale" content="en_US" />
+
+    <title>Predict the Market with Google Trends</title>
+  </head>
+
+  <body style="background-color: #f2f3f4;">
+    <div id="container">
+      <div id="intro">
+        <h1><a href="https://github.com/cristianpjensen/Njord" target="_blank">NJORD</a></h1>
+        <img src="images/wob_njord_logo.svg" width="300" height="300">
+        <p class="large">STOCK MARKET</p>
+        <p class="large">PREDICTION</p>
+        <p class="small">VIA</p>
+        <p class="large">GOOGLE TRENDS</p>
+        <br><br><br><br><br><br><br>
+        <p class="desc">Njord attempts to predict future stock prices based on Google Trends data,<br>using machine learning.</p>
+        <br><br><br><br><br><br><br>
+        <p id="first_paragraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore 
+          et dolore magna aliqua. Integer vitae justo eget magna fermentum iaculis eu non diam. Quis blandit turpis cursus in hac 
+          habitasse platea dictumst. Dictum fusce ut placerat orci. Nunc consequat interdum varius sit amet mattis vulputate. Sociis 
+          natoque penatibus et magnis dis. Quisque id diam vel quam elementum pulvinar etiam. Lorem ipsum dolor sit amet consectetur 
+          adipiscing. Tempus iaculis urna id volutpat lacus. Libero id faucibus nisl tincidunt eget nullam non nisi est.</p>
+        <br><br>
+        <p>Ac placerat vestibulum lectus mauris ultrices eros in. Tellus mauris a diam maecenas sed enim ut sem. Arcu non odio euismod 
+          lacinia at quis risus. Cras semper auctor neque vitae tempus quam pellentesque. Nec sagittis aliquam malesuada bibendum arcu. 
+          Rhoncus dolor purus non enim praesent. Urna porttitor rhoncus dolor purus non enim praesent elementum facilisis. Ipsum dolor 
+          sit amet consectetur. Sapien pellentesque habitant morbi tristique senectus et netus. Tortor id aliquet lectus proin nibh nisl 
+          condimentum. Quis hendrerit dolor magna eget. Dignissim sodales ut eu sem integer. Tincidunt praesent semper feugiat nibh sed 
+          pulvinar. Non diam phasellus vestibulum lorem. Nunc congue nisi vitae suscipit. Morbi tempus iaculis urna id volutpat lacus 
+          laoreet. Sed viverra ipsum nunc aliquet bibendum enim. Vitae congue mauris rhoncus aenean.</p>
+        <br><br>
+        <p>Venenatis urna cursus eget nunc scelerisque viverra mauris in. Bibendum neque egestas congue quisque egestas diam in arcu. 
+          Ultricies mi eget mauris pharetra et ultrices neque ornare aenean. Imperdiet nulla malesuada pellentesque elit eget gravida. 
+          Amet volutpat consequat mauris nunc congue nisi vitae suscipit tellus. Proin sed libero enim sed faucibus turpis. Eu nisl nunc 
+          mi ipsum faucibus vitae aliquet nec ullamcorper. Cursus metus aliquam eleifend mi in nulla posuere. Diam donec adipiscing 
+          tristique risus nec feugiat in fermentum posuere. Duis ultricies lacus sed turpis tincidunt id aliquet risus. Tempor id eu 
+          nisl nunc mi ipsum faucibus vitae. Imperdiet dui accumsan sit amet nulla.</p>
+        <div id="vis0"></div>
+        <br><br><br><br>
+      </div>
+    </div>
+    <div class="container">
+      <div id="graphic">
+        <div id="sections">
+          <section class="step">
+            <h2>Needed Adjustments</h2>
+            <h3>Unadjusted Data</h3>
+            <p>To actually use the data—for feeding to the machine learning algorithm—the data first had to be adjusted. This was needed for 
+              two reasons: all data is relative within it's timeframe, and daily data is only available in 6-month increments.
+            </p>
+          </section>
+          <section class="step">
+            <p>For example, this is the unadjusted daily data for the search term <i>stock market</i>.</p>
+          </section>
+          <section class="step">
+            <p>As you can see, every 6-month increment, it kind of resets. This is because daily data is only available within that timeframe.</p>
+          </section>
+          <section class="step">
+            <h3>Adjusted Data</h3>
+            <p>Based on the restrictions, adjustments had to be made. In order to eliminate these restrictions, three steps had to be taken.</p>
+          </section>
+          <section class="step">
+            <p>Step 1 — Compute the percentage changes between all unadjusted daily datapoints.<br><br>
+               Step 2 — Insert weekly datapoints into the daily data at their corresponding place (the datapoint should be located at the date 
+               corresponding to the beginning date of the week). This only needs to be done in 5-year increments, which is the timeframe in which weekly
+               data is available. Of course this first has to be done with the weekly and monthly data aswell to compute the weekly data.<br><br>
+               Step 3 — Compute the datapoints in between the inserted weekly datapoints by multiplying the previous day's datapoint with the 
+               percentage change of the current day, starting at the inserted weekly datapoints.</p>
+          </section>
+          <section class="step">
+            <p>For example, this is the adjusted daily data for the search term <i>stock market</i>.</p>
+          </section>
+          <section class="step">
+            <h3>Monthly Data</h3>
+            <p>In order to validate that the adjusted daily data is indeed correct, we can compare it to the monthly data. The monthly data can 
+               be used for validation, because it is available for the entire timeframe of Google Trends, without any adjustments.
+            </p>
+          </section>
+          <section class="step">
+            <p>As you can see, the adjusted daily data certainly correlates with the monthly data. However, some days shoot up, because of an outlier. 
+               This causes the spike to be higher than in the monthly data, but that is only for that one day. Afterwards, it settles, which is why 
+               the average for the month is lower, and it does not cause a spike in the monthly data.
+            </p>
+          </section>
+          <section class="step">
+            <h2>But does it predict?</h2>
+          </section>
+        </div>
+        <div id="vis"></div>
+      </div>
+    </div>
+
+    <script src="js/scroller.js"></script>
+    <script src="js/sections.js"></script>
+    <script src="js/state.js"></script>
+  </body>
+</html>

@@ -1,0 +1,35 @@
+@font-face {
+    font-family: 'gandhi_serifbold';
+    src: url('fonts/Gandhi/gandhiserif-bold-webfont.woff2') format('woff2'),
+         url('fonts/Gandhi/gandhiserif-bold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'gandhi_serifbold_italic';
+    src: url('fonts/Gandhi/gandhiserif-bolditalic-webfont.woff2') format('woff2'),
+         url('fonts/Gandhi/gandhiserif-bolditalic-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'gandhi_serifitalic';
+    src: url('fonts/Gandhi/gandhiserif-italic-webfont.woff2') format('woff2'),
+         url('fonts/Gandhi/gandhiserif-italic-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'gandhi_serifregular';
+    src: url('fonts/Gandhi/gandhiserif-regular-webfont.woff2') format('woff2'),
+         url('fonts/Gandhi/gandhiserif-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}

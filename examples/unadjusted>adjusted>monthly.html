@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+
+    <!-- Load d3.js -->
+    <script src="https://d3js.org/d3.v4.js"></script>
+
+    <!-- Initialize a select button -->
+    <select id="selectButton"></select>
+
+    <!-- Create a div where the graph will take place -->
+    <div id="my_dataviz"></div>
+
+    <!-- Color Scale -->
+    <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700;900&display=swap" rel="stylesheet">
+
+    <style>
+      #my_dataviz {
+        margin: 0 auto;
+        width: 50%;
+      }
+    </style>
+</head>
+
+<body>
+    <script>
+
+        // set the dimensions and margins of the graph
+        var margin = {top: 100, right: 100, bottom: 100, left: 100},
+          width = 800 - margin.left - margin.right,
+          height = 600 - margin.top - margin.bottom;
+      
+        // append the svg object to the body of the page
+        var svg = d3.select("#my_dataviz")
+          .append("svg")
+            .attr("width", width + margin.left + margin.right)
+            .attr("height", height + margin.top + margin.bottom)
+          .append("g")
+            .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+        // gridlines in y axis function
+        function make_y_gridlines(y) {		
+          return d3.axisLeft(y)
+            .ticks(4)
+            .tickValues([25, 50, 75, 100])
+        }
+        
+        //Read the data
+        d3.csv("data/merged1.csv", function(data) {
+        
+          // List of groups (here I have one group per column)
+          var allGroup = ["start", "unadjusted", "adjusted", "monthly"]
+      
+          // add the options to the button
+          d3.select("#selectButton")
+            .selectAll('myOptions')
+                .data(allGroup)
+            .enter()
+              .append('option')
+            .text(function (d) { return d; }) // text showed in the menu
+            .attr("value", function (d) { return d; }) // corresponding value returned by the button
+      
+          // A color scale: one color for each group
+          var myColor = d3.scaleOrdinal()
+            .domain(allGroup)
+            .range(d3.schemeSet2);
+      
+          // Add X axis --> it is a date format
+          var parseTime = d3.timeParse("%Y-%m-%d")
+
+          var dates = [];
+
+          for (let obj of data) {
+            dates.push(parseTime(obj.Date));
+          }
+
+          var x = d3.scaleTime()
+            .domain(d3.extent(dates))
+            .range([0, width]);
+
+          svg.append("g")
+            .attr("transform", "translate(0," + height + ")")
+            .style("font-size", "12px")
+            .style("font-family", "Roboto, sans-serif")
+            .call(d3.axisBottom(x));
+
+          // Add Y axis
+          var y = d3.scaleLinear()
+            .domain([0, 100])
+            .range([height, 100]);
+
+          // add the Y gridlines
+          svg.append("g")			
+            .attr("stroke-dasharray", "5, 5")
+            .attr("opacity", ".4")
+            .attr("class", "yAxis")
+            .call(make_y_gridlines(y)
+              .tickSize(-width)
+              .tickFormat("")
+            )
+            .call(g => g.select(".domain").remove());
+          
+          // text label for the y axis
+          var yText = svg
+            .append("text")             
+              .attr("transform", "rotate(-90)")
+              .attr("y", 0 - 40)
+              .attr("x",0 - (height / 2) - 140)
+              .attr("dy", "1em")
+              .style("font-family", "Roboto, sans-serif")
+              .style("font-size", "14px")
+              .style("letter-spacing", ".005em")
+              .text("AMOUNT OF SEARCHES →");  
+
+          // text label for the title
+          var title1 = svg
+            .append("text")
+              .attr("x", 224)             
+              .attr("y", 0 - (margin.top / 2) + 80) 
+              .style("font-family", "Roboto, sans-serif")
+              .style("font-size", "24px")
+              .text("DATA");
+          
+          var title2Text = ""
+
+          // text label for the title
+          var title2 = svg
+            .append("text")
+              .attr("x", 224)
+              .attr("y", 0 - (margin.top / 2) + 80)
+              .style("font-family", "Roboto, sans-serif")
+              .style("font-size", "24px")
+              .style("text-anchor", "end")
+              .text(title2Text);
+      
+          // Initialize line with group a
+          var line = svg
+            .append('g')
+            .append("path")
+              .datum(data)
+              .attr("d", d3.line()
+                .x(function(d) { return x(+parseTime(d.Date)) })
+                .y(function(d) { return y(+d.start) })
+              )
+              .style("fill", "white")
+              .style("stroke-width", 1)
+              .style("fill", "none");
+      
+          // A function that update the chart
+          function update(selectedGroup) {
+      
+            // Create new data with the selection
+            var dataFilter = data.map(function(d){return {index: d.Date, value:d[selectedGroup]} })
+
+            const animationDuration = 1000;
+      
+            // Give these new data to update line
+            line
+              .datum(dataFilter)
+              .transition()
+              .duration(animationDuration)
+                .attr("d", d3.line()
+                  .x(function(d) { return x(+parseTime(d.index)) })
+                  .y(function(d) { return y(+d.value) })
+                )
+                .attr("stroke", function(d){ return myColor(selectedGroup) });
+            
+            if (selectedGroup == "unadjusted" || selectedGroup == "adjusted") {
+              title2Text = selectedGroup.toUpperCase() + " DAILY"
+            } else if (selectedGroup == "monthly") { 
+              title2Text = "REAL " + selectedGroup.toUpperCase() 
+            } else if (selectedGroup == "start") {
+              title2Text = ""
+            };
+            
+            title2
+              .transition()
+              .duration(animationDuration / 2)
+                .attr("x", -150)
+              .transition()
+              .duration(animationDuration / 2)
+                .attr("x", 224)
+                .style("fill", function(d){ return myColor(selectedGroup) })
+                .text(title2Text);
+
+            yText
+              .transition()
+              .duration(animationDuration)
+                .style("fill", function(d){ return myColor(selectedGroup) });
+          }
+      
+          // When the button is changed, run the updateChart function
+          d3.select("#selectButton").on("change", function(d) {
+              // recover the option that has been chosen
+              var selectedOption = d3.select(this).property("value")
+              // run the updateChart function with this selected option
+              update(selectedOption)
+          })
+        
+        })
+        
+        
+        </script>
+</body>
+
+</html>
