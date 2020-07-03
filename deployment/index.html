@@ -10,8 +10,7 @@
     <link href="//db.onlinewebfonts.com/c/e0ad94902a160013fafd2403e5e638cb?family=Canela" rel="stylesheet" type="text/css"/>
 
     <script src="https://d3js.org/d3.v4.js"></script>
-    <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
-
+    
     <meta
       name="description"
       content="Google Trends data has the ability to forecast Stock Market movements - this is used by a Machine Learning model."
@@ -42,9 +41,9 @@
       <div id="intro">
         <h1><a href="https://github.com/cristianpjensen/Njord" target="_blank">NJORD</a></h1>
         <img src="images/wob_njord_logo.svg" width="300" height="300">
-        <p class="large">STOCK MARKET</p>
-        <p class="large">PREDICTION</p>
-        <p class="small">VIA</p>
+        <p class="large">PREDICT</p>
+        <p class="large">THE MARKET</p>
+        <p class="small">WITH</p>
         <p class="large">GOOGLE TRENDS</p>
         <br><br><br><br><br><br><br>
         <p class="desc">Njord attempts to predict future stock prices based on Google Trends data,<br>using machine learning.</p>
@@ -76,8 +75,8 @@
     <div class="container">
       <div id="graphic">
         <div id="sections">
+          <h2>Needed Adjustments</h2>
           <section class="step">
-            <h2>Needed Adjustments</h2>
             <h3>Unadjusted Data</h3>
             <p>To actually use the data—for feeding to the machine learning algorithm—the data first had to be adjusted. This was needed for 
               two reasons: all data is relative within it's timeframe, and daily data is only available in 6-month increments.
@@ -87,19 +86,20 @@
             <p>For example, this is the unadjusted daily data for the search term <i>stock market</i>.</p>
           </section>
           <section class="step">
-            <p>As you can see, every 6-month increment, it kind of resets. This is because daily data is only available within that timeframe.</p>
+            <p>As you can see, every 6-month increment, it resets. This is because daily data is only available within that timeframe.</p>
           </section>
           <section class="step">
             <h3>Adjusted Data</h3>
             <p>Based on the restrictions, adjustments had to be made. In order to eliminate these restrictions, three steps had to be taken.</p>
           </section>
           <section class="step">
-            <p>Step 1 — Compute the percentage changes between all unadjusted daily datapoints.<br><br>
-               Step 2 — Insert weekly datapoints into the daily data at their corresponding place (the datapoint should be located at the date 
-               corresponding to the beginning date of the week). This only needs to be done in 5-year increments, which is the timeframe in which weekly
-               data is available. Of course this first has to be done with the weekly and monthly data aswell to compute the weekly data.<br><br>
-               Step 3 — Compute the datapoints in between the inserted weekly datapoints by multiplying the previous day's datapoint with the 
-               percentage change of the current day, starting at the inserted weekly datapoints.</p>
+            <p>Step 1 — Compute the percentage changes between all unadjusted daily datapoints.</p>
+          </section>
+          <section class="step">
+            <p>Step 2 — Insert weekly datapoints into the adjusted data at their corresponding place, and compute the data in between.</p>
+          </section>
+          <section class="step">
+            <p>Step 3 — Divide the adjusted data by the maximum adjustment datapoint.</p>
           </section>
           <section class="step">
             <p>For example, this is the adjusted daily data for the search term <i>stock market</i>.</p>
@@ -109,11 +109,14 @@
             <p>In order to validate that the adjusted daily data is indeed correct, we can compare it to the monthly data. The monthly data can 
                be used for validation, because it is available for the entire timeframe of Google Trends, without any adjustments.
             </p>
+            <p>As you can see, the adjusted daily data certainly correlates with the monthly data. However, some days shoot up, because of an outlier. 
+              This causes the spike to be higher than in the monthly data, but that is only for that one day. Afterwards, it settles, which is why 
+              the average for the month is lower, and it does not cause a spike in the monthly data.
+           </p>
           </section>
           <section class="step">
-            <p>As you can see, the adjusted daily data certainly correlates with the monthly data. However, some days shoot up, because of an outlier. 
-               This causes the spike to be higher than in the monthly data, but that is only for that one day. Afterwards, it settles, which is why 
-               the average for the month is lower, and it does not cause a spike in the monthly data.
+            <h3>Explore</h3>
+            <p>--</p>
             </p>
           </section>
           <section class="step">

@@ -85,7 +85,7 @@ a:hover {
 }
 
 .step {
-  margin-bottom: 100px;
+  margin-bottom: 250px;
 }
 
 #vis {
@@ -97,6 +97,7 @@ a:hover {
   height: 600px;
   width: 900px;
   background-color: 0;
+  opacity: 0;
 }
 
 #intro {
