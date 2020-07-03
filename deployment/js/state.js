@@ -19,7 +19,7 @@ var svg = d3.select("#vis0")
 function make_y_gridlines(y, data) {		
   return d3.axisLeft(y)
   .ticks(1)
-  .tickValues([data[0].Close])
+  .tickValues([data[0].close])
 }
 
 // Read the data.
@@ -27,7 +27,7 @@ d3.csv("data/data.csv", function(data) {
 
   // Convert Close to integer, else d3.max() doesn't work.
   data.forEach(function(d) {
-    d.Close = parseInt(d.Close);
+    d.close = parseInt(d.close);
   });
 
   // Add X axis --> it is a date format.
@@ -35,7 +35,7 @@ d3.csv("data/data.csv", function(data) {
 
   var dates = [];
   for (var obj of data) {
-    dates.push(parseTime(obj.Date));
+    dates.push(parseTime(obj.date));
   }
 
   var x = d3.scaleTime()
@@ -43,7 +43,7 @@ d3.csv("data/data.csv", function(data) {
     .range([0, width]);
 
   var y = d3.scaleLinear()
-    .domain([d3.min(data, d => d.Close) * 0.75, d3.max(data, d => d.Close)])
+    .domain([d3.min(data, d => d.close) * 0.75, d3.max(data, d => d.close)])
     .range([height, 100]);
 
   // Make the chart SVG.
@@ -109,7 +109,7 @@ d3.csv("data/data.csv", function(data) {
       .style("font-family", "Roboto, sans-serif")
       .style("font-size", "9px")
       .style("font-weight", "300")
-      .text("The machine learning model was deployed on ..date.. on Google Cloud, from where the data is being pulled directly. The dotted line indicates the starting point of")
+      .text("The machine learning model was deployed on ..date.. on Google Cloud, from where the data is being extracted directly. The dotted line indicates the starting point of")
   
   svg
     .append("text")
@@ -128,15 +128,15 @@ d3.csv("data/data.csv", function(data) {
     .append("path")
       .datum(data)
       .attr("d", d3.line()
-        .x(function(d) { return x(+parseTime(d.Date)) })
-        .y(function(d) { return y(+d.Close) })
+        .x(function(d) { return x(+parseTime(d.date)) })
+        .y(function(d) { return y(+d.close) })
       )
       .attr("stroke", foregroundColor)
       .style("stroke-width", 1)
       .style("fill", "none");
 
   // The last value at the end of the line.
-  const lastValue = data[data.length - 1].Close
+  const lastValue = data[data.length - 1].close
 
   const lineText = svg
     .append("text")
@@ -147,7 +147,7 @@ d3.csv("data/data.csv", function(data) {
       .attr("transform", "translate(600," + y(lastValue) + ")")
       .attr("x", 8)
       .attr("y", ".35em")
-      .text(Math.round(lastValue));
+      .text(lastValue.toFixed(2) + "%");
 
   // Animate the path via scrolling.
   const path = d3.select("svg g g g path").data([data]);
@@ -167,7 +167,7 @@ d3.csv("data/data.csv", function(data) {
   window.addEventListener('scroll', () => {  
     const startAnimate = 950;
 
-    const scrollTop = html.scrollTop - startAnimate;
+    var scrollTop = html.scrollTop - startAnimate;
 
     if (scrollTop < 0) {
       scrollTop = 0;
@@ -175,6 +175,14 @@ d3.csv("data/data.csv", function(data) {
 
     const maxScrollTop = 495;
     const scrollFraction = scrollTop / maxScrollTop;
+
+    const startGraphs = 980;
+
+    if (scrollTop > startGraphs) {
+      document.getElementById("vis").style.opacity = ((scrollTop - startGraphs) * 10) / 100;
+    } else {
+      document.getElementById("vis").style.opacity = 0;
+    }
 
     if (scrollFraction >= 1) {
       lineText.style("opacity", (scrollFraction - 1) * 50);
@@ -187,7 +195,7 @@ d3.csv("data/data.csv", function(data) {
       Math.floor(scrollFraction * pathLength)
     );
 
-    requestAnimationFrame(() => updatePath(pathIndex + 1))
+    requestAnimationFrame(() => updatePath(pathIndex + 1));
   });
 
 })

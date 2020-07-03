@@ -11,17 +11,14 @@ function scroller() {
     // event dispatcher
     var dispatch = d3.dispatch('active', 'progress');
 
-    // d3 selection of all the
-    // text sections that will
-    // be scrolled through
+    // Selection of all text sections.
     var sections = null;
 
-    // array that will hold the
-    // y coordinate of each section
-    // that is scrolled through
+    // Holds the y-coordinates of all the sections that will be scrolled
+    // through.
     var sectionPositions = [];
     var currentIndex = -1;
-    // y coordinate of
+    // Y-coordinate of
     var containerStart = 0;
 
     /**
