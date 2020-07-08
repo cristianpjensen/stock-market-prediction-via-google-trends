@@ -339,6 +339,105 @@ function scrollVis() {
               .text(tableData[i].normalised);
         }
 
+        const allKeywords = ["debt", "color", "stocks", "restaurant", "portfolio", "inflation", "housing","dow jones", "revenue",
+                             "economics", "credit", "markets", "return", "unemployment", "money", "religion", "cancer", "growth", 
+                             "investment", "hedge", "marriage", "bonds", "derivatives", "headlines", "profit", "society", "leverage", 
+                             "loss", "cash", "office", "fine", "stock market", "banking", "crisis", "happy", "car", "nasdaq", 
+                             "gains", "finance", "sell", "invest", "fed", "house", "metals", "travel", "returns", "gain", 
+                             "default", "present", "holiday", "water", "rich", "risk", "gold", "success", "oil", "war", "economy", 
+                             "chance", "lifestyle", "greed", "food", "movie", "nyse", "ore", "opportunity", "health", "earnings", 
+                             "arts", "culture", "bubble", "buy", "trader", "tourism", "politics", "energy", "consume", "consumption",
+                             "freedom", "dividend", "world", "conflict", "kitchen", "forex", "home", "cash", "transaction", "garden",
+                             "fond", "train", "labor", "fun", "environment", "ring"];
+
+        var selectedKeyword = "stock_market";
+
+        $( "#kwInput" ).autocomplete({
+            source: allKeywords
+        });
+
+        g.append("g")
+          .attr("class", "line keyword")
+          .attr("opacity", 0)
+          .append("path")
+            .datum(keywordData)
+            .attr("d", d3.line()
+              .x(function(d) { return xAdjustment(+parseTime(d.date)) })
+              .y(function(d) { return yAdjustment(d[selectedKeyword]) })
+            )
+            .style("stroke", lineColors[3])
+            .style("stroke-width", 1)
+            .style("fill", "none");
+
+
+        var dataTime = keywordData.map(function(obj) {
+            return parseTime(obj.date);
+        });
+
+        // console.log(dataTime);
+
+        var slider = d3
+          .sliderBottom()
+            .min(d3.min(dataTime))
+            .max(d3.max(dataTime))
+            .width(300)
+            .tickFormat(d3.timeFormat("%Y"))
+            .default([d3.min(dataTime), d3.max(dataTime)])
+            .handle(
+              d3
+                .symbol()
+                .type(d3.symbolCircle)
+                .size(200)()
+            )
+            .fill("#cccccc")
+            .on("onchange", (date) => {
+                xAdjustment.domain(date);
+
+                const xMin = xAdjustment.domain()[0];
+                const xMax = xAdjustment.domain()[-1];
+
+                // console.log(xMin);
+
+                g.selectAll(".x.axis")
+                    .call(d3.axisBottom(xAdjustment));
+                
+                g.selectAll(".line.keyword path")
+                  .datum(keywordData)
+                  .attr("d", d3.line()
+                    .defined(function(d) { console.log(parseTime(d.date)) })
+                    .x(function(d) { return xAdjustment(+parseTime(d.date)); })
+                    .y(function(d) { return yAdjustment(d[selectedKeyword]); })
+                  );
+            });
+
+        function kwFunction() {
+            selectedKeyword = $("#kwInput").val();
+
+            g.selectAll(".line.keyword path")
+              .datum(keywordData)
+              .attr("d", d3.line()
+                .x(function(d) { return xAdjustment(+parseTime(d.date)) })
+                .y(function(d) { return yAdjustment(d[selectedKeyword.replace(" ", "_")]) })
+              );
+
+            g.selectAll(".title.text2")
+              .transition()
+              .duration(500)
+              .text(`"${selectedKeyword}"`);
+        };
+
+        var gSlider = d3
+          .selectAll("#dateSlider")
+          .append("svg")
+            .attr("width", 500)
+            .attr("height", 100)
+            .append("g")
+              .attr("transform", "translate(30,30)");
+          
+        gSlider.call(slider);
+
+        setupVis.kwFunction = kwFunction;
+
     };
 
     function setupSections() {
@@ -517,6 +616,9 @@ function scrollVis() {
           .transition()
           .duration(500)
             .attr("opacity", 1);
+          
+        g.selectAll(".table.values.adjusted.e0")
+          .style("font-weight", 700);
     };
 
     function inbetweenTable() {
@@ -544,6 +646,11 @@ function scrollVis() {
           .transition()
           .duration(500)
             .attr("opacity", 1);
+
+        g.selectAll(".table.values.adjusted.e0")
+          .transition()
+          .duration(500)
+            .style("font-weight", 300);
     };
 
     function adjustedChart() {
@@ -596,6 +703,11 @@ function scrollVis() {
           .transition()
           .duration(500)
             .attr("opacity", 1);
+
+        g.selectAll(".line.adjusted")
+          .transition()
+          .duration(500)
+            .attr("opacity", 1);
         
         g.selectAll(".title.text2")
           .transition()
@@ -610,7 +722,20 @@ function scrollVis() {
     };
 
     function exploreChart() {
+        g.selectAll(".line.monthly")
+          .transition()
+          .duration(500)
+            .attr("opacity", 0);
 
+        g.selectAll(".line.adjusted")
+          .transition()
+          .duration(500)
+            .attr("opacity", 0);
+
+        g.selectAll(".line.keyword")
+          .transition()
+          .duration(500)
+            .attr("opacity", 1);
     };
 
     // Update functions.
@@ -670,7 +795,7 @@ function scrollVis() {
     function getKeywords(rawData) {
         return rawData.map(function(obj) {
             return {
-                data: obj.date,
+                date: obj.date,
                 debt: obj.debt,
                 color: obj.color,
                 stocks: obj.stocks,
@@ -785,6 +910,8 @@ function scrollVis() {
     chart.update = function(index, progress) {
         updateFunctions[index](progress);
     };
+
+    scrollVis.setupVis = setupVis;
 
     return chart;
 };

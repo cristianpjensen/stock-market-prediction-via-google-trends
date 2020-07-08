@@ -88,6 +88,14 @@ a:hover {
   margin-bottom: 250px;
 }
 
+#kwInput {
+  width: 100%;
+  font-size: 14px;
+  padding: 12px 20px 12px 12px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+}
+
 #vis {
   display: inline-block;
   position: fixed;
