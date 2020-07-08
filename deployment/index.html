@@ -10,6 +10,10 @@
     <link href="//db.onlinewebfonts.com/c/e0ad94902a160013fafd2403e5e638cb?family=Canela" rel="stylesheet" type="text/css"/>
 
     <script src="https://d3js.org/d3.v4.js"></script>
+    <script src="https://unpkg.com/d3-simple-slider"></script>
+
+    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
     
     <meta
       name="description"
@@ -116,12 +120,18 @@
           </section>
           <section class="step">
             <h3>Explore</h3>
-            <p>--</p>
+            <p>Play around with 96 financial search terms.</p>
+            <br>
+            <p style="font-size: 12px"><b>FILTER BY DATE</b></p>
+            <div id="dateSlider"></div>
+            <br><br>
+            <p style="font-size: 12px"><b>FILTER BY SEARCH TERMS</b></p>
+            <input type="text" id="kwInput" onkeyup="scrollVis.setupVis.kwFunction();" placeholder="Search for a keyword...">
             </p>
           </section>
-          <section class="step">
+          <!-- <section class="step">
             <h2>But does it predict?</h2>
-          </section>
+          </section> -->
         </div>
         <div id="vis"></div>
       </div>
