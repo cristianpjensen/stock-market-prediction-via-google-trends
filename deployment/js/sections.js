@@ -356,8 +356,18 @@ function scrollVis() {
             source: allKeywords
         });
 
+        g
+          .append("clipPath")
+            .attr("id", "sliderClip")
+          .append("rect")
+            .attr("x", 0)
+            .attr("y", 0)
+            .attr("width", width)
+            .attr("height", height);
+
         g.append("g")
           .attr("class", "line keyword")
+          .attr("clip-path","url(#sliderClip)")
           .attr("opacity", 0)
           .append("path")
             .datum(keywordData)
@@ -373,8 +383,6 @@ function scrollVis() {
         var dataTime = keywordData.map(function(obj) {
             return parseTime(obj.date);
         });
-
-        // console.log(dataTime);
 
         var slider = d3
           .sliderBottom()
@@ -393,18 +401,12 @@ function scrollVis() {
             .on("onchange", (date) => {
                 xAdjustment.domain(date);
 
-                const xMin = xAdjustment.domain()[0];
-                const xMax = xAdjustment.domain()[-1];
-
-                // console.log(xMin);
-
                 g.selectAll(".x.axis")
                     .call(d3.axisBottom(xAdjustment));
                 
                 g.selectAll(".line.keyword path")
                   .datum(keywordData)
                   .attr("d", d3.line()
-                    .defined(function(d) { console.log(parseTime(d.date)) })
                     .x(function(d) { return xAdjustment(+parseTime(d.date)); })
                     .y(function(d) { return yAdjustment(d[selectedKeyword]); })
                   );
@@ -699,6 +701,11 @@ function scrollVis() {
     };
 
     function monthlyChart() {
+        g.selectAll(".line.keyword")
+          .transition()
+          .duration(500)
+            .attr("opacity", 0);
+
         g.selectAll(".line.monthly")
           .transition()
           .duration(500)
@@ -708,7 +715,17 @@ function scrollVis() {
           .transition()
           .duration(500)
             .attr("opacity", 1);
-        
+
+        g.selectAll(".title.text2")
+          .transition()
+          .duration(0)
+            .attr("opacity", 1)
+          
+        g.selectAll(".y.text")
+          .transition()
+          .duration(0)
+            .attr("opacity", 1)
+
         g.selectAll(".title.text2")
           .transition()
           .duration(500)
