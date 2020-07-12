@@ -34,6 +34,7 @@ html {
 body {    
   margin: 0 !important;
   padding: 0 !important;
+  user-select: text !important;
 }
 
 h2 {
@@ -64,7 +65,6 @@ p {
 a {
   color: var(--background);
   text-decoration: underline;
-  font-weight: 400;
 }
 
 a:hover {
@@ -106,6 +106,7 @@ a:hover {
   width: 900px;
   background-color: 0;
   opacity: 0;
+  left: 10000;
 }
 
 #intro {
@@ -133,7 +134,6 @@ a:hover {
 
 #intro a {
   color: var(--foreground);
-  font-weight: 700;
   text-decoration: underline;
 }
 
@@ -176,14 +176,15 @@ a:hover {
   margin-left: 20px;
   margin-right: 20px;
   line-height: 1.8em;
-  text-align: left;
   font-weight: 300;
   color: var(--foreground);
+  text-align: justify;
 }
 
 #intro #first_paragraph::first-letter {
   -webkit-initial-letter: 3;
   initial-letter: 3;
+  color: #107896;
   margin-right: .4em;
   font-weight: 700;
 }
@@ -192,6 +193,10 @@ a:hover {
   margin: 0 auto;
   width: 100%;
   margin-bottom: 50px;
+}
+
+::selection {
+  background: rgba(16, 120, 150, 1);
 }
 
 .graph0 line {
