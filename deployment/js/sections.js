@@ -1,5 +1,5 @@
 function scrollVis() {
-  const margin = { top: 0, left: 150, bottom: 50, right: 100 };
+  const margin = { top: 0, left: 150, bottom: 80, right: 100 };
   const width = 1000 - margin.left - margin.right;
   const height = 600 - margin.top - margin.bottom;
 
@@ -117,6 +117,28 @@ function scrollVis() {
       .style("fill", backgroundColor)
       .text("DATA");
 
+    g
+      .append("line")
+      .attr("stroke-width", 0.5)
+      .style("stroke", backgroundColor)
+      .attr("opacity", 0.6)
+      .attr("x1", -20)
+      .attr("y1", height + 40)
+      .attr("x2", width + 20)
+      .attr("y2", height + 40);
+
+    g
+      .append("text")
+      .attr("class", "scroller description")
+      .attr("x", -20)
+      .attr("y", height + 62)
+      .style("fill", backgroundColor)
+      .attr("opacity", 0.6)
+      .style("font-family", "Roboto, sans-serif")
+      .style("font-size", "10.5px")
+      .style("font-weight", "300")
+      .text("The line indicates the relative amount of searches over the timespan 2004—2020. All data is collected from trends.google.com, and modifications were made where needed.");
+
     // Graph indicator.
     g.append("text")
       .attr("class", "title text2")
@@ -212,7 +234,7 @@ function scrollVis() {
       .style("fill", backgroundColor)
       .text("Date");
 
-    const tableLength = 20;
+    const tableLength = 18;
 
     for (var i = 0; i < tableLength; i++) {
       g.append("text")
@@ -600,6 +622,9 @@ function scrollVis() {
     g.selectAll(".y.text").transition().duration(500)
       .attr("opacity", 1)
       .style("fill", lineColors[1]);
+
+    g.selectAll(".scroller.description").transition().duration(500)
+      .text("The line indicates the relative amount of searches over the timespan 2004—2020. All data is collected from trends.google.com, and modifications were made where needed.");
   }
 
   function incrementUnadjustedChart() {
@@ -621,6 +646,9 @@ function scrollVis() {
     g.selectAll(".table.column.pct_change").transition().duration(500).attr("opacity", 1);
     g.selectAll(".table.values.date").transition().duration(500).attr("opacity", 1);
     g.selectAll(".table.values.unadjusted").transition().duration(500).attr("opacity", 1);
+
+    g.selectAll(".scroller.description").transition().duration(500)
+      .text("The above table is a snippet from the data. The entire data actually spans over 2004—2020—not only the first 18 days of 2004. The depicted changes are the actual changes.");
   }
 
   function insertDataTable() {
@@ -649,6 +677,9 @@ function scrollVis() {
       .transition()
       .duration(500)
       .style("font-weight", 300);
+
+    g.selectAll(".scroller.description").transition().duration(500)
+      .text("The above table is a snippet from the data. The entire data actually spans over 2004—2020—not only the first 18 days of 2004. The depicted changes are the actual changes.");
   }
 
   function adjustedChart() {
@@ -660,18 +691,17 @@ function scrollVis() {
     g.selectAll(".y.gridlines").transition().duration(500).attr("opacity", 1);
     g.selectAll(".line.adjusted").transition().duration(500).attr("opacity", 1);
 
-    g.selectAll(".title.text2")
-      .transition()
-      .duration(500)
+    g.selectAll(".title.text2").transition().duration(500)
       .attr("opacity", 1)
       .style("fill", lineColors[2])
       .text("ADJUSTED");
 
-    g.selectAll(".y.text")
-      .transition()
-      .duration(500)
+    g.selectAll(".y.text").transition().duration(500)
       .attr("opacity", 1)
       .style("fill", lineColors[2]);
+
+    g.selectAll(".scroller.description").transition().duration(500)
+      .text("The line indicates the relative amount of searches over the timespan 2004—2020. All data is collected from trends.google.com, and modifications were made where needed.");
   }
 
   function monthlyChart() {
@@ -683,15 +713,11 @@ function scrollVis() {
     g.selectAll(".title.text2").transition().duration(0).attr("opacity", 1);
     g.selectAll(".y.text").transition().duration(0).attr("opacity", 1);
 
-    g.selectAll(".title.text2")
-      .transition()
-      .duration(500)
+    g.selectAll(".title.text2").transition().duration(500)
       .style("fill", lineColors[3])
       .text("MONTHLY");
 
-    g.selectAll(".y.text")
-      .transition()
-      .duration(500)
+    g.selectAll(".y.text").transition().duration(500)
       .style("fill", backgroundColor);
   }
 
@@ -701,9 +727,7 @@ function scrollVis() {
 
     g.selectAll(".line.keyword").transition().duration(500).attr("opacity", 1);
 
-    g.selectAll(".title.text2")
-      .transition()
-      .duration(500)
+    g.selectAll(".title.text2").transition().duration(500)
       .text('"stock market"');
   }
 
