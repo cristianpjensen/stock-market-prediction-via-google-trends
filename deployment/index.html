@@ -52,26 +52,21 @@
         <br><br><br><br><br><br><br>
         <p class="desc">Njord attempts to predict future stock prices based on Google Trends data,<br>using machine learning.</p>
         <br><br><br><br><br><br><br>
-        <p id="first_paragraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore 
-          et dolore magna aliqua. Integer vitae justo eget magna fermentum iaculis eu non diam. Quis blandit turpis cursus in hac 
-          habitasse platea dictumst. Dictum fusce ut placerat orci. Nunc consequat interdum varius sit amet mattis vulputate. Sociis 
-          natoque penatibus et magnis dis. Quisque id diam vel quam elementum pulvinar etiam. Lorem ipsum dolor sit amet consectetur 
-          adipiscing. Tempus iaculis urna id volutpat lacus. Libero id faucibus nisl tincidunt eget nullam non nisi est.</p>
+        <p id="first_paragraph">Stock market prediction is the act of trying to determine the future value of a company stock or other 
+          financial instrument traded on an exchange. The successful prediction of a stock's future price could yield significant profit.
+          With the advent of the digital computer, stock market prediction has since moved into the technological realm. The most 
+          prominent technique involves the use of artificial neural networks. ANNs can be thought of as mathematical function approximators.</p>
         <br><br>
-        <p>Ac placerat vestibulum lectus mauris ultrices eros in. Tellus mauris a diam maecenas sed enim ut sem. Arcu non odio euismod 
-          lacinia at quis risus. Cras semper auctor neque vitae tempus quam pellentesque. Nec sagittis aliquam malesuada bibendum arcu. 
-          Rhoncus dolor purus non enim praesent. Urna porttitor rhoncus dolor purus non enim praesent elementum facilisis. Ipsum dolor 
-          sit amet consectetur. Sapien pellentesque habitant morbi tristique senectus et netus. Tortor id aliquet lectus proin nibh nisl 
-          condimentum. Quis hendrerit dolor magna eget. Dignissim sodales ut eu sem integer. Tincidunt praesent semper feugiat nibh sed 
-          pulvinar. Non diam phasellus vestibulum lorem. Nunc congue nisi vitae suscipit. Morbi tempus iaculis urna id volutpat lacus 
-          laoreet. Sed viverra ipsum nunc aliquet bibendum enim. Vitae congue mauris rhoncus aenean.</p>
-        <br><br>
-        <p>Venenatis urna cursus eget nunc scelerisque viverra mauris in. Bibendum neque egestas congue quisque egestas diam in arcu. 
-          Ultricies mi eget mauris pharetra et ultrices neque ornare aenean. Imperdiet nulla malesuada pellentesque elit eget gravida. 
-          Amet volutpat consequat mauris nunc congue nisi vitae suscipit tellus. Proin sed libero enim sed faucibus turpis. Eu nisl nunc 
-          mi ipsum faucibus vitae aliquet nec ullamcorper. Cursus metus aliquam eleifend mi in nulla posuere. Diam donec adipiscing 
-          tristique risus nec feugiat in fermentum posuere. Duis ultricies lacus sed turpis tincidunt id aliquet risus. Tempor id eu 
-          nisl nunc mi ipsum faucibus vitae. Imperdiet dui accumsan sit amet nulla.</p>
+        <p>In 2011, <a href="https://www.nature.com/articles/srep01684?__hstc=113740504.2a1e835c34ab7bf88e972fdd7a7debc8.1424476800061.1424476800062.1424476800063.1&__hssc=113740504.1.1424476800064&__hsfp=3972014050"
+          target="_blank">there was experimentation with Google Trends data to predict the stock market.</a> A correlation between the data of multiple 
+          search terms and the stock market price had been found. This is the research upon which Njord is based. In this research 98
+          financial words were found, which had some kind of correlation with the stock price of the Dow Jones Industrial Average. Njord
+          takes the search data for these words and feeds them into an XGBoost machine learning algorithm. Based on this data, Njord attempts
+          to determine whether the stock price of the Dow Jones Industrial Average will go up (1) or down (0).</p>
+        <br><br><br><br><br><br><br>
+        <p style="text-align: center; font-family: Roboto; font-weight: 700;">SIGNATURE</p>
+        <br><br><br><br><br><br>
+        <p style="text-align: center; font-family: Roboto; font-weight: 400;">by <a href="https://github.com/cristianpjensen" target="_blank">Cristian Perez Jensen</a></p>
         <div id="vis0"></div>
         <br><br><br><br>
       </div>
@@ -126,7 +121,7 @@
             <div id="dateSlider"></div>
             <br><br>
             <p style="font-size: 12px"><b>FIND A SEARCH TERM</b></p>
-            <section><input type="text" id="kwInput" onchange="scrollVis.setupVis.kwFunction();" placeholder="Search for a term..."></section>
+            <section><input type="text" id="kwInput" onkeyup="scrollVis.setupVis.kwFunction();" placeholder="Search for a term..."></section>
             <br><br><br><br>
             <button class="stock-button" onclick="scrollVis.setupVis.stockFunction();">COMPARE TO THE STOCK MARKET</button>
           </section>
