@@ -5,3 +5,6 @@ requests==2.23.0
 urllib3==1.25.9
 yfinance==0.1.54
 jupyter==1.0.0
+xgboost==1.1.0
+scikit-klearn==0.23.1
+numpy==1.18.5
