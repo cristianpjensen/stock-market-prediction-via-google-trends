@@ -10,8 +10,8 @@ function scrollVis() {
   var g = null;
 
   var xAdjustment = d3.scaleTime().range([0, width]);
-
   var yAdjustment = d3.scaleLinear().domain([0, 100]).range([height, 100]);
+  var y1 = d3.scaleLinear().domain([6000, 30000]).range([height, 100]);
 
   const lineColors = {
     0: foregroundColor,
@@ -135,16 +135,9 @@ function scrollVis() {
       .attr("class", "line start")
       .append("path")
       .datum(adjustmentData)
-      .attr(
-        "d",
-        d3
-          .line()
-          .x(function (d) {
-            return xAdjustment(+parseTime(d.date));
-          })
-          .y(function (d) {
-            return yAdjustment(+d.start);
-          })
+      .attr("d", d3.line()
+        .x(function (d) { return xAdjustment(+parseTime(d.date)); }) 
+        .y(function (d) { return yAdjustment(+d.start); })
       )
       .style("stroke", lineColors[0])
       .style("stroke-width", 1)
@@ -156,16 +149,9 @@ function scrollVis() {
       .attr("opacity", 0)
       .append("path")
       .datum(adjustmentData)
-      .attr(
-        "d",
-        d3
-          .line()
-          .x(function (d) {
-            return xAdjustment(+parseTime(d.date));
-          })
-          .y(function (d) {
-            return yAdjustment(+d.unadjusted);
-          })
+      .attr("d", d3.line()
+        .x(function (d) { return xAdjustment(+parseTime(d.date)); })
+        .y(function (d) { return yAdjustment(+d.unadjusted); })
       )
       .style("stroke", lineColors[1])
       .style("stroke-width", 1)
@@ -177,16 +163,9 @@ function scrollVis() {
       .attr("opacity", 0)
       .append("path")
       .datum(adjustmentData)
-      .attr(
-        "d",
-        d3
-          .line()
-          .x(function (d) {
-            return xAdjustment(+parseTime(d.date));
-          })
-          .y(function (d) {
-            return yAdjustment(+d.normalised);
-          })
+      .attr("d", d3.line()
+        .x(function (d) { return xAdjustment(+parseTime(d.date)); })
+        .y(function (d) { return yAdjustment(+d.normalised); })
       )
       .style("stroke", lineColors[2])
       .style("stroke-width", 1)
@@ -198,16 +177,9 @@ function scrollVis() {
       .attr("opacity", 0)
       .append("path")
       .datum(adjustmentData)
-      .attr(
-        "d",
-        d3
-          .line()
-          .x(function (d) {
-            return xAdjustment(+parseTime(d.date));
-          })
-          .y(function (d) {
-            return yAdjustment(+d.monthly);
-          })
+      .attr( "d", d3.line()
+        .x(function (d) { return xAdjustment(+parseTime(d.date)); })
+        .y(function (d) { return yAdjustment(+d.monthly); })
       )
       .style("stroke", lineColors[3])
       .style("stroke-width", 1)
@@ -478,20 +450,39 @@ function scrollVis() {
       .attr("opacity", 0)
       .append("path")
       .datum(keywordData)
-      .attr(
-        "d",
-        d3
-          .line()
-          .x(function (d) {
-            return xAdjustment(+parseTime(d.date));
-          })
-          .y(function (d) {
-            return yAdjustment(d[selectedKeyword]);
-          })
+      .attr("d", d3.line()
+        .x(function (d) { return xAdjustment(+parseTime(d.date)); })
+        .y(function (d) { return yAdjustment(d[selectedKeyword]); })
       )
       .style("stroke", lineColors[3])
       .style("stroke-width", 1)
       .style("fill", "none");
+
+    g.append("g")
+      .attr("class", "line stock")
+      .attr("clip-path", "url(#sliderClip)")
+      .attr("opacity", 0)
+      .append("path")
+      .datum(keywordData)
+      .attr("d", d3.line()
+        .x(function (d) { return xAdjustment(+parseTime(d.date)); })
+        .y(function (d) { return y1(+d.close); })
+      )
+      .style("stroke", backgroundColor)
+      .style("stroke-width", 1)
+      .style("fill", "none");
+
+    var stock = false;
+
+    function stockFunction() {
+      if (stock === false) {
+        g.selectAll(".line.stock").transition().duration(500).attr("opacity", 1);
+        stock = true;
+      } else {
+        g.selectAll(".line.stock").transition().duration(500).attr("opacity", 0);
+        stock = false;
+      }
+    };
 
     var dataTime = keywordData.map(function (obj) {
       return parseTime(obj.date);
@@ -513,16 +504,16 @@ function scrollVis() {
 
         g.selectAll(".line.keyword path")
           .datum(keywordData)
-          .attr(
-            "d",
-            d3
-              .line()
-              .x(function (d) {
-                return xAdjustment(+parseTime(d.date));
-              })
-              .y(function (d) {
-                return yAdjustment(d[selectedKeyword]);
-              })
+          .attr("d", d3.line()
+            .x(function (d) { return xAdjustment(+parseTime(d.date)); })
+            .y(function (d) { return yAdjustment(d[selectedKeyword]); })
+          );
+
+        g.selectAll(".line.stock path")
+          .datum(keywordData)
+          .attr("d", d3.line()
+            .x(function (d) { return xAdjustment(+parseTime(d.date)); })
+            .y(function (d) { return y1(+d.close); })
           );
       });
 
@@ -531,23 +522,16 @@ function scrollVis() {
 
       g.selectAll(".line.keyword path")
         .datum(keywordData)
-        .attr(
-          "d",
-          d3
-            .line()
-            .x(function (d) {
-              return xAdjustment(+parseTime(d.date));
-            })
-            .y(function (d) {
-              return yAdjustment(d[selectedKeyword.replace(" ", "_")]);
-            })
+        .attr("d", d3.line()
+          .x(function (d) { return xAdjustment(+parseTime(d.date)); })
+          .y(function (d) { return yAdjustment(d[selectedKeyword.replace(" ", "_")]); })
         );
 
       g.selectAll(".title.text2")
         .transition()
         .duration(500)
         .text(`"${selectedKeyword}"`);
-    }
+    };
 
     var gSlider = d3
       .selectAll("#dateSlider")
@@ -560,6 +544,7 @@ function scrollVis() {
     gSlider.call(slider);
 
     setupVis.kwFunction = kwFunction;
+    setupVis.stockFunction = stockFunction;
   }
 
   function setupSections() {
@@ -583,10 +568,7 @@ function scrollVis() {
 
   // Activate functions.
   function emptyChart() {
-    g.selectAll(".line.unadjusted")
-      .transition()
-      .duration(500)
-      .attr("opacity", 0);
+    g.selectAll(".line.unadjusted").transition().duration(500).attr("opacity", 0);
 
     g.selectAll(".title.text2")
       .transition()
@@ -602,34 +584,22 @@ function scrollVis() {
 
   function unadjustedChart() {
     g.selectAll(".table").transition().duration(500).attr("opacity", 0);
-
     g.selectAll(".line.adjusted").transition().duration(500).attr("opacity", 0);
-
     g.selectAll(".x.gridlines").transition().duration(500).attr("opacity", 0);
 
     g.selectAll(".y.gridlines").transition().duration(500).attr("opacity", 0.4);
-
     g.select(".x.axis").transition().duration(500).style("opacity", 1);
+    g.selectAll(".line.unadjusted").transition().duration(500).attr("opacity", 1);
+    g.selectAll(".title.text").transition().duration(500).attr("opacity", 1);
 
-    g.selectAll(".line.unadjusted")
-      .transition()
-      .duration(500)
-      .attr("opacity", 1);
-
-    g.selectAll(".title.text2")
-      .transition()
-      .duration(500)
+    g.selectAll(".title.text2").transition().duration(500)
       .attr("opacity", 1)
       .style("fill", lineColors[1])
       .text("UNADJUSTED");
 
-    g.selectAll(".y.text")
-      .transition()
-      .duration(500)
+    g.selectAll(".y.text").transition().duration(500)
       .attr("opacity", 1)
       .style("fill", lineColors[1]);
-
-    g.selectAll(".title.text").transition().duration(500).attr("opacity", 1);
   }
 
   function incrementUnadjustedChart() {
@@ -640,59 +610,22 @@ function scrollVis() {
 
   function percentageChangeTable() {
     g.selectAll(".x.axis").transition().duration(500).style("opacity", 0);
-
     g.selectAll(".y").transition().duration(500).attr("opacity", 0);
-
     g.selectAll(".title").transition().duration(500).attr("opacity", 0);
-
     g.selectAll(".line").transition().duration(500).attr("opacity", 0);
+    g.selectAll(".table.column.adjusted").transition().duration(500).attr("opacity", 0);
+    g.selectAll(".table.values.adjusted").transition().duration(500).attr("opacity", 0);
 
-    g.selectAll(".table.column.adjusted")
-      .transition()
-      .duration(500)
-      .attr("opacity", 0);
-
-    g.selectAll(".table.values.adjusted")
-      .transition()
-      .duration(500)
-      .attr("opacity", 0);
-
-    g.selectAll(".table.column.date")
-      .transition()
-      .duration(500)
-      .attr("opacity", 1);
-
-    g.selectAll(".table.column.unadjusted")
-      .transition()
-      .duration(500)
-      .attr("opacity", 1);
-
-    g.selectAll(".table.column.pct_change")
-      .transition()
-      .duration(500)
-      .attr("opacity", 1);
-
-    g.selectAll(".table.values.date")
-      .transition()
-      .duration(500)
-      .attr("opacity", 1);
-
-    g.selectAll(".table.values.unadjusted")
-      .transition()
-      .duration(500)
-      .attr("opacity", 1);
+    g.selectAll(".table.column.date").transition().duration(500).attr("opacity", 1);
+    g.selectAll(".table.column.unadjusted").transition().duration(500).attr("opacity", 1);
+    g.selectAll(".table.column.pct_change").transition().duration(500).attr("opacity", 1);
+    g.selectAll(".table.values.date").transition().duration(500).attr("opacity", 1);
+    g.selectAll(".table.values.unadjusted").transition().duration(500).attr("opacity", 1);
   }
 
   function insertDataTable() {
-    g.selectAll(".table.column.normalised")
-      .transition()
-      .duration(500)
-      .attr("opacity", 0);
-
-    g.selectAll(".table.values.normalised")
-      .transition()
-      .duration(500)
-      .attr("opacity", 0);
+    g.selectAll(".table.column.normalised").transition().duration(500).attr("opacity", 0);
+    g.selectAll(".table.values.normalised").transition().duration(500).attr("opacity", 0);
 
     g.selectAll(".table.values.pct_change").attr("opacity", 1);
 
@@ -706,11 +639,8 @@ function scrollVis() {
 
   function inbetweenTable() {
     g.selectAll(".x.axis").transition().duration(500).style("opacity", 0);
-
     g.selectAll(".y").transition().duration(500).attr("opacity", 0);
-
     g.selectAll(".title").transition().duration(500).attr("opacity", 0);
-
     g.selectAll(".line").transition().duration(500).attr("opacity", 0);
 
     g.selectAll(".table").transition().duration(500).attr("opacity", 1);
@@ -723,15 +653,11 @@ function scrollVis() {
 
   function adjustedChart() {
     g.selectAll(".table").transition().duration(500).attr("opacity", 0);
-
     g.selectAll(".line.monthly").transition().duration(1000).attr("opacity", 0);
 
     g.selectAll(".x.axis").transition().duration(500).style("opacity", 1);
-
     g.selectAll(".title.text").transition().duration(500).attr("opacity", 1);
-
     g.selectAll(".y.gridlines").transition().duration(500).attr("opacity", 1);
-
     g.selectAll(".line.adjusted").transition().duration(500).attr("opacity", 1);
 
     g.selectAll(".title.text2")
@@ -750,13 +676,11 @@ function scrollVis() {
 
   function monthlyChart() {
     g.selectAll(".line.keyword").transition().duration(500).attr("opacity", 0);
+    g.selectAll(".line.stock").transition().duration(500).attr("opacity", 0);
 
     g.selectAll(".line.monthly").transition().duration(500).attr("opacity", 1);
-
     g.selectAll(".line.adjusted").transition().duration(500).attr("opacity", 1);
-
     g.selectAll(".title.text2").transition().duration(0).attr("opacity", 1);
-
     g.selectAll(".y.text").transition().duration(0).attr("opacity", 1);
 
     g.selectAll(".title.text2")
@@ -773,10 +697,14 @@ function scrollVis() {
 
   function exploreChart() {
     g.selectAll(".line.monthly").transition().duration(500).attr("opacity", 0);
-
     g.selectAll(".line.adjusted").transition().duration(500).attr("opacity", 0);
 
     g.selectAll(".line.keyword").transition().duration(500).attr("opacity", 1);
+
+    g.selectAll(".title.text2")
+      .transition()
+      .duration(500)
+      .text('"stock market"');
   }
 
   // Update functions.
@@ -926,6 +854,7 @@ function scrollVis() {
         fun: obj.fun,
         environment: obj.environment,
         ring: obj.ring,
+        close: obj.close
       };
     });
   }
