@@ -118,7 +118,7 @@ d3.csv("data/data.csv", function (data) {
     .text("the model.");
 
   // The line.
-  const line = svg
+  svg
     .append("g")
     .append("g")
     .append("path")
@@ -168,7 +168,7 @@ d3.csv("data/data.csv", function (data) {
   const html = document.documentElement;
 
   window.addEventListener("scroll", () => {
-    const startAnimate = 950;
+    const startAnimate = 910;
 
     var scrollTop = html.scrollTop - startAnimate;
 
@@ -176,7 +176,7 @@ d3.csv("data/data.csv", function (data) {
       scrollTop = 0;
     }
 
-    const maxScrollTop = 495;
+    const maxScrollTop = 420;
     const scrollFraction = scrollTop / maxScrollTop;
 
     const startGraphs = 980;
@@ -184,8 +184,11 @@ d3.csv("data/data.csv", function (data) {
     if (scrollTop > startGraphs) {
       document.getElementById("vis").style.opacity =
         ((scrollTop - startGraphs) * 10) / 100;
+
+      document.getElementById("vis").style.left = "600px";
     } else {
       document.getElementById("vis").style.opacity = 0;
+      document.getElementById("vis").style.left = "10000px";
     }
 
     if (scrollFraction >= 1) {
