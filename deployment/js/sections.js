@@ -480,6 +480,20 @@ function scrollVis() {
       .style("stroke-width", 1)
       .style("fill", "none");
 
+      g.append("text") 
+        .attr("class", "y1 text")
+        .attr("opacity", 0)       
+        .attr("transform", "rotate(-90)")
+        .attr("y", width + 20)
+        .attr("x", -(height / 2) - 140)
+        .attr("dy", "1em")
+        .style("font-family", "Roboto, sans-serif")
+        .style("font-size", "14px")
+        .style("font-weight", "700")
+        .style("letter-spacing", ".005em")
+        .style("fill", backgroundColor)
+        .text("DJIA STOCK PRICE →");
+
     g.append("g")
       .attr("class", "line stock")
       .attr("clip-path", "url(#sliderClip)")
@@ -498,12 +512,14 @@ function scrollVis() {
 
     function stockFunction() {
       if (stock === false) {
+        g.selectAll(".y1.text").transition().duration(500).attr("opacity", 1);
         g.selectAll(".line.stock").transition().duration(500).attr("opacity", 1);
         stock = true;
       } else {
+        g.selectAll(".y1.text").transition().duration(500).attr("opacity", 0);
         g.selectAll(".line.stock").transition().duration(500).attr("opacity", 0);
         stock = false;
-      }
+      };
     };
 
     var dataTime = keywordData.map(function (obj) {
@@ -707,6 +723,7 @@ function scrollVis() {
   function monthlyChart() {
     g.selectAll(".line.keyword").transition().duration(500).attr("opacity", 0);
     g.selectAll(".line.stock").transition().duration(500).attr("opacity", 0);
+    g.selectAll(".y1.text").transition().duration(500).attr("opacity", 0);
 
     g.selectAll(".line.monthly").transition().duration(500).attr("opacity", 1);
     g.selectAll(".line.adjusted").transition().duration(500).attr("opacity", 1);
@@ -717,8 +734,7 @@ function scrollVis() {
       .style("fill", lineColors[3])
       .text("MONTHLY");
 
-    g.selectAll(".y.text").transition().duration(500)
-      .style("fill", backgroundColor);
+    g.selectAll(".y.text").transition().duration(500).style("fill", backgroundColor);
   }
 
   function exploreChart() {
@@ -727,8 +743,9 @@ function scrollVis() {
 
     g.selectAll(".line.keyword").transition().duration(500).attr("opacity", 1);
 
-    g.selectAll(".title.text2").transition().duration(500)
-      .text('"stock market"');
+    g.selectAll(".y.text").transition().duration(500).style("fill", lineColors[3])
+
+    g.selectAll(".title.text2").transition().duration(500).text('"stock market"');
   }
 
   // Update functions.
