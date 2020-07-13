@@ -98,15 +98,13 @@ a:hover {
 
 #vis {
   display: inline-block;
-  position: fixed;
-  top: 200px;
+  position: absolute;
+  top: 2214px;
   z-index: 1;
   margin-left: 30px;
   height: 600px;
   width: 900px;
   background-color: 0;
-  opacity: 0;
-  left: 10000;
 }
 
 #intro {
@@ -178,7 +176,6 @@ a:hover {
   line-height: 1.8em;
   font-weight: 300;
   color: var(--foreground);
-  text-align: justify;
 }
 
 #intro #first_paragraph::first-letter {
@@ -215,7 +212,6 @@ a:hover {
   position: absolute;
   border: 1px solid #d4d4d4;
   border-bottom: none;
-  /*position the autocomplete items to be the same width as the container:*/
   left: 0;
   right: 0;
 }
@@ -237,7 +233,7 @@ a:hover {
 }
 
 .stock-button {
-  background-color: var(--foreground); /* Green */
+  background-color: var(--foreground); 
   border: None;
   color: var(--background);
   text-align: center;
@@ -256,5 +252,38 @@ a:hover {
 }
 
 .stock-button:hover {
-  box-shadow: none;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 2px 10px 0 rgba(0,0,0,0.19);
+}
+
+#outro {
+  margin: 0 auto;
+  width: 40%;
+  background-color: var(--foreground);
+}
+
+#container1 {
+  margin: 0 auto;
+  width: 100%;
+  background-color: var(--foreground);
+}
+
+#outro a {
+  color: var(--background);
+  text-decoration: underline;
+}
+
+#outro p {
+  font-family: "Publico Text Web";
+  font-size: 16px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin-left: 20px;
+  margin-right: 20px;
+  line-height: 1.8em;
+  font-weight: 300;
+  color: var(--background);
+}
+
+#container2 {
+  text-align: center;
 }
