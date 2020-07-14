@@ -44,7 +44,7 @@ d3.csv("data/data.csv", function (data) {
     .range([height, 100]);
 
   // Make the chart SVG.
-  const chart = svg
+  svg
     .append("g")
     .attr("transform", "translate(0," + height + ")")
     .attr("class", "graph0")
@@ -62,7 +62,7 @@ d3.csv("data/data.csv", function (data) {
     .call((g) => g.select(".domain").remove());
 
   // Text label for the Y-axis.
-  var yText = svg
+  svg
     .append("text")
     .attr("transform", "rotate(-90)")
     .attr("y", 0 - 40)
@@ -179,16 +179,23 @@ d3.csv("data/data.csv", function (data) {
     const maxScrollTop = 420;
     const scrollFraction = scrollTop / maxScrollTop;
 
-    const startGraphs = 980;
+    const startGraphs = 1100;
+    const stopGraphs = 4450;
 
     if (scrollTop > startGraphs) {
-      document.getElementById("vis").style.opacity =
-        ((scrollTop - startGraphs) * 10) / 100;
-
-      document.getElementById("vis").style.left = "600px";
+      document.getElementById("vis").style.position = "fixed";
+      document.getElementById("vis").style.top = "200px";
     } else {
-      document.getElementById("vis").style.opacity = 0;
-      document.getElementById("vis").style.left = "10000px";
+      document.getElementById("vis").style.top = "2214px";
+      document.getElementById("vis").style.position = "absolute";
+    }
+
+    if (scrollTop > stopGraphs) {
+      document.getElementById("vis").style.top = "5562px";
+      document.getElementById("vis").style.position = "absolute";
+    } else if (scrollTop > startGraphs) {
+      document.getElementById("vis").style.top = "200px";
+      document.getElementById("vis").style.position = "fixed";
     }
 
     if (scrollFraction >= 1) {
