@@ -43,16 +43,8 @@ class FeatureEngineer():
 
     def get_parameters(self):
         """Gets the parameters given by the user. If no parameter was given, then standard parameters will be used."""
-        self.KW_LIST = ["debt", "color", "stocks", "restaurant", "portfolio", "inflation", "housing", "dow_jones", "revenue",
-                        "economics", "credit", "markets", "return", "unemployment", "money", "religion", "cancer", "growth",
-                        "investment", "hedge", "marriage", "bonds", "derivatives", "headlines", "profit", "society", "leverage",
-                        "loss", "cash", "office", "fine", "stock_market", "banking", "crisis", "happy", "car", "nasdaq",
-                        "gains", "finance", "sell", "invest", "fed", "house", "metals", "travel", "returns", "gain",
-                        "default", "present", "holiday", "water", "rich", "risk", "gold", "success", "oil", "war", "economy",
-                        "chance", "lifestyle", "greed", "food", "movie", "nyse", "ore", "opportunity", "health", "earnings",
-                        "arts", "culture", "bubble", "buy", "trader", "tourism", "politics", "energy", "consume", "consumption",
-                        "freedom", "dividend", "world", "conflict", "kitchen", "forex", "home", "cash", "transaction", "garden",
-                        "fond", "train", "labor", "fun", "environment", "ring"]
+        self.KW_LIST = [line.rstrip("\n")
+                        for line in open("scripts/keywords.txt")]
 
         argv = sys.argv[1:]
 
@@ -76,8 +68,7 @@ class FeatureEngineer():
                 if arg in ["daily", "weekly"]:
                     self.INTERVAL = arg
                 else:
-                    print(
-                        "The interval has to be `daily` or `weekly`. Consult the documentation.")
+                    print(o"--interval (-i) = daily | weekly")
                     sys.exit(2)
 
             if opt in ["-n", "--n"]:
@@ -89,7 +80,7 @@ class FeatureEngineer():
                 if 0 < arg < 100:
                     self.N = arg
                 else:
-                    print("0 < N < 100.")
+                    print("0 < N < 100")
                     sys.exit(2)
 
             if opt in ["-o", "--offset"]:
@@ -108,28 +99,25 @@ class FeatureEngineer():
                 if arg in ["delta", "pct_change", "rolling"]:
                     self.TYPE = arg
                 else:
-                    print(
-                        "The feature type has to be `delta`, `pct_change`, or `rolling`. Consult the documentation.")
+                    print("--type (-t) = delta | pct_change | rolling")
                     sys.exit(2)
 
             if opt in ["-r", "--target"]:
                 if arg in ["binary", "bins"]:
                     self.TARGET = arg
                 else:
-                    print(
-                        "The target has to be `binary` or `bins. Consult the documentation.")
+                    print("--target (-r) = binary | bins")
                     sys.exit(2)
 
             if opt in ["-c", "--curated"]:
                 if arg == "True":
                     self.curated = True
-                    self.KW_LIST = ["debt", "stocks", "dow_jones", "markets", "unemployment", "money", "stock_market",
-                                    "crisis", "nasdaq", "finance", "invest"]
+                    self.KW_LIST = [line.rstrip("\n")
+                                    for line in open("scripts/curated.txt")]
                 elif arg == "False":
                     self.curated = False
                 else:
-                    print(
-                        "Curated has to be `True` or `False`. Consult the documentation.")
+                    print("--curated (-c) = True | False")
                     sys.exit(2)
 
     def import_data(self):
