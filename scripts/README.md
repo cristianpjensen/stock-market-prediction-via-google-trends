@@ -1,5 +1,19 @@
 # Documentation
 
+## `data_collection.py`
+
+### Purpose
+
+The purpose of this file is to pull data from Google Trends. Google Trends doesn't have an API, so that is the gap that `data_collection.py` is filling. It first pulls all data in the appropriate timeframes (due to daily and weekly data only being available in specific lengths of time). Then it adjusts the data, because all data is relative within its timeframe.
+
+### `keywords.txt`
+
+`keywords.txt` plays a big role in the function of the script. This txt-file contains the keywords that `data_collection.py` will pull. In case the script terminates (due to too many requests not being allowed by Google), you don't need to remove the already downloaded keywords from `keywords.txt`. The script skips over already downloaded keywords.
+
+### Usage
+
+To use the script, you need to put in the keywords you want to download. Afterward, you can simply use `python3 scripts/data_collection.py` in your terminal and it will start downloading the search volume history of all keywords specified by the `keywords.txt`-file. This takes a considerate amount of time, due to Google not allowing too many requests consecutively. Thus the requests are spaced out by 90 seconds. In case a request has failed three times in a row, the script terminates. 
+
 ## `feature_engineering.py`
 
 ### Purpose
