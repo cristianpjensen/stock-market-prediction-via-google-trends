@@ -20,7 +20,6 @@ investment
 hedge
 marriage
 bonds
-derivatives
 headlines
 profit
 society
@@ -57,17 +56,14 @@ oil
 war
 economy
 chance
-short sell
 lifestyle
 greed
 food
-financial markets
 movie
 nyse
 ore
 opportunity
 health
-short selling
 earnings
 arts
 culture

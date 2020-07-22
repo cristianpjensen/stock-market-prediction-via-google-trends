@@ -22,7 +22,7 @@ class Trends():
         self.start_date = datetime.date(2004, 1, 1)
         self.end_date = datetime.date.today()
 
-        with open("keywords.txt", "r") as f:
+        with open("scripts/keywords.txt", "r") as f:
             for line in f:
                 self.keyword = line.strip()
 
