@@ -42,7 +42,7 @@ The data used by Njord is downloaded from [Google Trends](https://trends.google.
 
 ## Project Status <a name = "project_status"></a>
 
-This project is currently under development. All data has been collected and cleaned for Njord's usage.
+This project is currently under development.
 
 ## Installation <a name = "installation"></a>
 
