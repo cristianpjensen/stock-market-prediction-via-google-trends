@@ -1,0 +1,11 @@
+debt
+stocks
+dow_jones
+markets
+unemployment
+money
+stock_market
+crisis
+nasdaq
+finance
+invest
