@@ -56,17 +56,17 @@ This project is currently under development.
 
 ### Data Collection <a name = "data_collection"></a>
 
-Two datasets were needed for this project; the Google Trends daily data for a specific keyword and the stock price daily data for a specific ticker. To collect the Google Trends daily data, you have to download all 6-month increments, 5-year increments, and 2004-present within the 2004-2020 timespan. All this data will eventually be adjusted to be relative to each other, instead of only within its respective timespan. To collect the stock price daily data for a specific ticker you want to predict, you have to download it from a website like [Yahoo Finance](https://finance.yahoo.com), where you can download the historical data of any ticker.
+Two datasets were needed for this project; the Google Trends daily data for a specific keyword and the stock price daily data for a specific ticker. To collect the Google Trends daily data, you have to download all 6-month increments, 5-year increments, and 2004—present within the 2004—2020 timespan. All this data will eventually be adjusted to be relative to each other, instead of only within its respective timespan. To collect the stock price daily data for a specific ticker you want to predict, you have to download it from a website like [Yahoo Finance](https://finance.yahoo.com), where you can download the historical data of any ticker.
 
 ### Data Visualization <a name = "data_visualization"></a>
 
 #### Correlation <a name = "correlation"></a>
-To prove that there indeed is a correlation between Google Trends data (e.g. 'debt') and stock prices (e.g. Dow Jones Industrial Average). I created a graph plotting these two against each other:
+To prove that there indeed is a correlation between Google Trends data (e.g. 'debt') and stock prices (e.g. Dow Jones Industrial Average). I plotted the DJIA stock price with indicators of peaks in the search volume for "stock market". As you can see, before a major stock market crash, there are usually some peaks to be observed. There are also some peaks in the middle of a crash, but the peaks before the crash are quite indicative.
 
 <p align="center">
-  <img src="images/graphs/djia_with_peaks.png" alt="DJIA stock price data with peaks-indicators of 'stock market'." width=600>
+  <img src="images/graphs/djia_with_peaks.png" alt="DJIA stock price data with peak-indicators of 'stock market'." width=600>
   
-  <b>Figure 1.</b> A graph where the stock price of DJIA is plotted against the relative search volume of the search term 'debt'. The red and green vertical lines indicate a spike in the number of searches and a dip in the stock market respectively.
+  <b>Figure 1.</b> A graph where the stock price of DJIA is plotted with red dots where a peak in search volume for "stock market" has been observed. From this graph can be observed that erratic movement in search volume precedes a major stock crash.
 </p>
 
 #### Adjusted <a name = "adjusted"></a>
@@ -85,11 +85,11 @@ All data on Google Trends is relative (0—100) to each other within one timefra
 
 ### Method <a name = "method"></a>
 
-To get all the data relative to each other, instead of only within its 6-month increment, I had to merge them together based on weekly data. However, the weekly data is only available in 5-year increments, so I had to merge these 5-year increments together based on the monthly data, which is available for timespan needed for this project. To merge all the 6-month, and 5-year increments, I computed the percentage change of each data point within its respective increment. Afterwards, I got one data point from the higher up periodicity data per increment and computed the missing days by applying the percentage change to the provided data point.
+To get all the data relative to each other, instead of only within its 6-month increment, I had to merge them based on weekly data. However, the weekly data is only available in 5-year increments, so I had to merge these 5-year increments based on the monthly data, which is available for timespan needed for this project. To merge all the 6-month, and 5-year increments, I computed the percentage change of each data point within its respective increment. Afterwards, I got one data point from the higher up periodicity data per increment and computed the missing days by applying the percentage change to the provided data point.
 
 #### Example <a name = "example_merge"></a>
 
-An example of the search term 'debt' ('debt' is the best search term to predict market change, according to the research mentioned earlier) in the timespan 2007-2009:
+An example of the search term 'debt' ('debt' is the best search term to predict market change, according to the research mentioned earlier) in the timespan 2007—2009:
 
 #### Before adjustments <a name = "before_adjustments"></a>
 
