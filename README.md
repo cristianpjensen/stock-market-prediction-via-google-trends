@@ -64,7 +64,7 @@ Two datasets were needed for this project; the Google Trends daily data for a sp
 To prove that there indeed is a correlation between Google Trends data (e.g. 'debt') and stock prices (e.g. Dow Jones Industrial Average). I plotted the DJIA stock price with indicators of peaks in the search volume for "stock market". As you can see, before a major stock market crash, there are usually some peaks to be observed. There are also some peaks in the middle of a crash, but the peaks before the crash are quite indicative.
 
 <p align="center">
-  <img src="images/graphs/djia_with_peaks.png" alt="DJIA stock price data with peak-indicators of 'stock market'." width=600>
+  <img src="images/graphs/djia_with_peaks.png" alt="DJIA stock price data with peak-indicators of 'stock market'." width=1200>
   
   <b>Figure 1.</b> A graph where the stock price of DJIA is plotted with red dots where a peak in search volume for "stock market" has been observed. From this graph can be observed that erratic movement in search volume precedes a major stock crash.
 </p>
