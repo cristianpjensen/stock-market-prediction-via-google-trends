@@ -25,7 +25,7 @@
 - [Reflection](#reflection)
 - [Data](#data)
   - [Data Collection](#data_collection)
-  - [Data Visualization](#data_visualization)
+  - [Data Visualisation](#data_visualisation)
     - [Correlation](#correlation)
     - [Adjusted](#adjusted)
   - [Restrictions](#restrictions)
@@ -58,7 +58,7 @@ This project is currently under development.
 
 Two datasets were needed for this project; the Google Trends daily data for a specific keyword and the stock price daily data for a specific ticker. To collect the Google Trends daily data, you have to download all 6-month increments, 5-year increments, and 2004—present within the 2004—2020 timespan. All this data will eventually be adjusted to be relative to each other, instead of only within its respective timespan. To collect the stock price daily data for a specific ticker you want to predict, you have to download it from a website like [Yahoo Finance](https://finance.yahoo.com), where you can download the historical data of any ticker.
 
-### Data Visualization <a name = "data_visualization"></a>
+### Data Visualisation <a name = "data_visualisation"></a>
 
 #### Correlation <a name = "correlation"></a>
 To prove that there indeed is a correlation between Google Trends data (e.g. 'debt') and stock prices (e.g. Dow Jones Industrial Average). I plotted the DJIA stock price with indicators of peaks in the search volume for "stock market". As you can see, before a major stock market crash, there are usually some peaks to be observed. There are also some peaks in the middle of a crash, but the peaks before the crash are quite indicative.
