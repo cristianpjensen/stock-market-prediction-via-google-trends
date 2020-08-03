@@ -44,7 +44,7 @@ class FeatureEngineer():
     def get_parameters(self):
         """Gets the parameters given by the user. If no parameter was given, then standard parameters will be used."""
         self.KW_LIST = [line.rstrip("\n")
-                        for line in open("scripts/keywords.txt")]
+                        for line in open("../data/keywords.txt")]
 
         argv = sys.argv[1:]
 
@@ -68,7 +68,7 @@ class FeatureEngineer():
                 if arg in ["daily", "weekly"]:
                     self.INTERVAL = arg
                 else:
-                    print(o"--interval (-i) = daily | weekly")
+                    print("--interval (-i) = daily | weekly")
                     sys.exit(2)
 
             if opt in ["-n", "--n"]:
@@ -113,7 +113,7 @@ class FeatureEngineer():
                 if arg == "True":
                     self.curated = True
                     self.KW_LIST = [line.rstrip("\n")
-                                    for line in open("scripts/curated.txt")]
+                                    for line in open("curated.txt")]
                 elif arg == "False":
                     self.curated = False
                 else:
