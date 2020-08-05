@@ -199,7 +199,7 @@ def lag(series, length=1):
 
     lag_df = pd.DataFrame()
     for i in range(1, length):
-        lag_df[f"lag_{i}"] = series.shift(i)
+        lag_df[f'lag_{i}'] = series.shift(i)
 
     return lag_df
 
