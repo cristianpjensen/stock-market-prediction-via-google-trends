@@ -224,7 +224,8 @@ def target_binary(series):
         raise TypeError('`series` must be of type pandas.Series.')
 
     pct_change = series.pct_change()
-    binary_series = pd.cut(pct_change, bins=2, labels=False)
+    binary_series = pd.cut(
+        pct_change, bins=[-float('inf'), 0, float('inf')], labels=False)
 
     return binary_series
 
