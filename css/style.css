@@ -68,7 +68,7 @@ a {
 }
 
 a:hover {
-  text-decoration-color: #107896;
+  text-decoration-color: #107896!important;
 }
 
 .container {
@@ -179,10 +179,11 @@ a:hover {
 }
 
 #intro #first_paragraph::first-letter {
-  -webkit-initial-letter: 3;
-  initial-letter: 3;
-  color: #107896;
-  margin-right: .4em;
+  float: left;
+  font-size: 6rem;
+  color: rgba(16, 120, 150, 1);
+  line-height: 0.65;
+  margin: 0.15em 0.1em 0 0;
   font-weight: 700;
 }
 
