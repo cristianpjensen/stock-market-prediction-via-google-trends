@@ -1,5 +1,4 @@
 import pandas as pd
-import yfinance as yf
 
 
 def research(series, length=3):
@@ -133,7 +132,7 @@ def sma(series, length=6):
         raise ValueError('`length` may not be less than 1 or greater than the \
                           size of the series.')
 
-    return series.rolling(window=length)
+    return series.rolling(window=length).mean()
 
 
 def ema(series, length=6):
@@ -165,7 +164,7 @@ def ema(series, length=6):
         raise ValueError('`length` may not be less than 1 or greater than the \
                           size of the series.')
 
-    return series.ewm(span=length, adjust=False)
+    return series.ewm(span=length, adjust=False).mean()
 
 
 def lag(series, length=1):
@@ -207,7 +206,7 @@ def lag(series, length=1):
 def target_binary(series):
     """
     Convert a series of stock prices to binary: up (1), down (0). This is used for
-    classifier algorithms.
+        classifier algorithms.
 
     Args:
         series (pandas.Series): Series of stock closing price.
