@@ -104,18 +104,18 @@ d3.csv("data/data.csv", function (data) {
     .style("font-size", "9px")
     .style("font-weight", "300")
     .text(
-      "The machine learning model was deployed on ..date.. on Google Cloud, from where the data is being extracted directly. The dotted line indicates the starting point of"
+      "DJIA stock price data is used as a placeholder for now, because the machine learning model has not been deployed yet."
     );
 
-  svg
-    .append("text")
-    .attr("x", -20)
-    .attr("y", height + 71)
-    .style("fill", foregroundColor)
-    .style("font-family", "Roboto, sans-serif")
-    .style("font-size", "9px")
-    .style("font-weight", "300")
-    .text("the model.");
+  // svg
+  //   .append("text")
+  //   .attr("x", -20)
+  //   .attr("y", height + 71)
+  //   .style("fill", foregroundColor)
+  //   .style("font-family", "Roboto, sans-serif")
+  //   .style("font-size", "9px")
+  //   .style("font-weight", "300")
+  //   .text("the model.");
 
   // The line.
   svg
