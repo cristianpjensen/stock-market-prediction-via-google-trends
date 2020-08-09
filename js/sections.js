@@ -454,7 +454,7 @@ function scrollVis() {
       "ring",
     ];
 
-    var selectedKeyword = "stock_market";
+    var selectedKeyword = "stock market";
 
     autocomplete(document.getElementById("kwInput"), allKeywords);
 
@@ -474,7 +474,7 @@ function scrollVis() {
       .datum(keywordData)
       .attr("d", d3.line()
         .x(function (d) { return xAdjustment(+parseTime(d.date)); })
-        .y(function (d) { return yAdjustment(d[selectedKeyword]); })
+        .y(function (d) { return yAdjustment(d[selectedKeyword.replace(" ", "_")]); })
       )
       .style("stroke", lineColors[3])
       .style("stroke-width", 1)
@@ -544,7 +544,7 @@ function scrollVis() {
           .datum(keywordData)
           .attr("d", d3.line()
             .x(function (d) { return xAdjustment(+parseTime(d.date)); })
-            .y(function (d) { return yAdjustment(d[selectedKeyword]); })
+            .y(function (d) { return yAdjustment(d[selectedKeyword.replace(" ", "_")]); })
           );
 
         g.selectAll(".line.stock path")
