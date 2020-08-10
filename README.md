@@ -23,6 +23,9 @@
 - [Project Status](#project_status)
 - [Installation](#installation)
 - [Reflection](#reflection)
+- [Results](#results)
+  - [MLPClassifier](#mlp)
+  - [XGBoost](#xgboost)
 - [Data](#data)
   - [Data Collection](#data_collection)
   - [Data Visualisation](#data_visualisation)
@@ -35,7 +38,8 @@
       - [After Adjustments](#after_adjustments)
       - [Weekly](#weekly)
 - [Features](#features)
-  - [Single Search Term](#single_search_term)
+  - [Simple Moving Average Delta](#sma_delta)
+  - [Bollinger Bands](#boll_bands)
 - [Project Organisation](#project_organisation)
 - [License](#license)
 
@@ -54,6 +58,30 @@ This project is currently under development.
 ## Reflection <a name = "reflection"></a>
 
 > TODO
+
+## Results <a name="results"></a>
+
+Two machine learning algorithms have been explored for this project: XGBoost and MLPClassifier. The MLPClassifier clearly performed better than XGBoost. The best annual return, which XGBoost got is 44.2%. In contrast, MLPClassifier's best model got a 91.3% between 2008 and the present. A big contribution towards these insanely high annual returns was the coronavirus. Because of the coronavirus, the stock market crashed, which could be a major source of profits for these algorithms. 
+
+### MLPClassifier <a name="mlp"></a>
+
+MLPClassifier performed very well on the test data. This algorithm was very strong in identifying that it was impossible to predict the small changes in the market in between crashes. Thus, for the most part, it held a buy-and-hold strategy, but during a stock market crash (like corona) or other, slightly bigger, changes, it performed well. As can be seen in figure 8.
+
+<p align="center">
+  <img src="docs/figures/strategy-comparisons.png" alt="Comparison of the MLPClassifier, 10.000 random and a buy-and-hold strategy" width=600>
+  
+  <b>Figure 8.</b> Comparison of the mean plus and minus 1 standard deviation of 10.000 random simulations, MLPClassifier algorithm and a buy-and-hold strategy.
+</p>
+
+### XGBoost <a name="xgboost"></a>
+
+XGBoost did not have the insight, which MLP did. It tried to predict the small changes, which it ultimately failed at. However, XGBoost was still able to predict the stock market crash caused by the coronavirus. This was the reason why XGBoost still had such a large annual return (44.2%). 
+
+<p align="center">
+  <img src="docs/figures/strategy-comparisons-including-xgb.png" alt="Comparison of the MLPClassifier, 10.000 random and a buy-and-hold strategy" width=600>
+  
+  <b>Figure 9.</b> Comparison of the mean plus and minus 1 standard deviation of 10.000 random simulations, MLPClassifier algorithm, XGBoost algorithm and a buy-and-hold strategy.
+</p>
 
 ## Data <a name = "data"></a>
 
@@ -131,7 +159,7 @@ To get better results, the raw data had to be feature engineered. Features used 
 Following the computation for these features, all of them are shifted 3 through 10 days. This is because Google Trends data is available three days after the fact and the target may correlate well with further shifted data. Afterward, there are 272 features. The top 50 correlating (with the target, according to the Pearson correlation coefficient) are used in the training and predicting of the direction of the Dow Jones Industrial Average.
 
 
-### Simple Moving Average Delta
+### Simple Moving Average Delta <a name="sma_delta"></a>
 
 <p align="center">
   <img src="docs/figures/SMA-delta-3.png" alt="SMA delta." width=600>
@@ -139,12 +167,12 @@ Following the computation for these features, all of them are shifted 3 through 
   <b>Figure 6.</b> When this feature becomes more volatile, the close price follows. This is a good indicator for a machine learning algorithm. It can also be seen that the close price percentage change loosely follows the line of the feature.
 </p>
 
-### Bollinger Bands <a name="bollinger_bands"></a>
+### Bollinger Bands <a name="boll_bands"></a>
 
 <p align="center">
   <img src="docs/figures/Bollinger-bands-20-2.png" alt="Bollinger bands." width=600>
   
-  <b>Figure 6.</b> When the 20-day simple moving average crosses the upper Bollinger band, the close price becomes more volatile. The stock close percentage change also loosely follows the lower Bollinger band.
+  <b>Figure 7.</b> When the 20-day simple moving average crosses the upper Bollinger band, the close price becomes more volatile. The stock close percentage change also loosely follows the lower Bollinger band.
 </p>
 
 ## Project Organisation <a name="project_organisation"></a>
@@ -180,16 +208,8 @@ Following the computation for these features, all of them are shifted 3 through 
         ├── data           <- Scripts to download or generate data
         │   └── make_dataset.py
         │
-        ├── features       <- Scripts to turn raw data into features for modeling
-        │   └── build_features.py
-        │
-        ├── models         <- Scripts to train models and then use trained models to make
-        │   │                 predictions
-        │   ├── predict_model.py
-        │   └── train_model.py
-        │
-        └── visualisation  <- Scripts to create exploratory and results oriented visualizations
-            └── visualise.py
+        └── features       <- Scripts to turn raw data into features for modeling
+            └── build_features.py
 ```
 
 ## [License](/LICENSE) <a name = "license"></a>
