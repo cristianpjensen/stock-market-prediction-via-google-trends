@@ -142,6 +142,7 @@ An example of the search term 'debt' ('debt' is the best search term to predict 
     ├── requirements.txt   <- The requirements file for reproducing the analysis environment, e.g.
     │                         generated with `pip freeze > requirements.txt`
     │
+    ├── setup.py           <- makes project pip installable (pip install -e .) so src can be imported
     └── src                <- Source code for use in this project.
         ├── __init__.py    <- Makes src a Python module
         │
@@ -156,8 +157,8 @@ An example of the search term 'debt' ('debt' is the best search term to predict 
         │   ├── predict_model.py
         │   └── train_model.py
         │
-        └── visualization  <- Scripts to create exploratory and results oriented visualizations
-            └── visualize.py
+        └── visualisation  <- Scripts to create exploratory and results oriented visualizations
+            └── visualise.py
 ```
 
 ## [License](/LICENSE) <a name = "license"></a>
