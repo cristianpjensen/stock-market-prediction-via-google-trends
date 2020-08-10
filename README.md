@@ -34,6 +34,8 @@
       - [Before Adjustments](#before_adjustments)
       - [After Adjustments](#after_adjustments)
       - [Weekly](#weekly)
+- [Features](#features)
+  - [Single Search Term](#single_search_term)
 - [Project Organisation](#project_organisation)
 - [License](#license)
 
@@ -114,6 +116,35 @@ An example of the search term 'debt' ('debt' is the best search term to predict 
   <img src="docs/figures/example_actual_monthly.png" alt="Actual monthly data." width=600>
   
   <b>Figure 5.</b> The actual weekly data.
+</p>
+
+## Features <a name="features"></a>
+
+To get better results, the raw data had to be feature engineered. Features used include:
+* A feature, where today's data point is subtracted by the previous n-days simple moving average. This is inspired by the research this project is based on;
+* The delta (difference) between two values with n days in between;
+* The [percentage change](https://en.wikipedia.org/wiki/Relative_change_and_difference) between two values with n days in between;
+* A [simple moving average](https://en.wikipedia.org/wiki/Moving_average#Simple_moving_average);
+* An [exponential moving average](https://en.wikipedia.org/wiki/Moving_average#Exponential_moving_average);
+* Upper and lower [Bollinger bands](https://en.wikipedia.org/wiki/Bollinger_Bands).
+
+Following the computation for these features, all of them are shifted 3 through 10 days. This is because Google Trends data is available three days after the fact and the target may correlate well with further shifted data. Afterward, there are 272 features. The top 50 correlating (with the target, according to the Pearson correlation coefficient) are used in the training and predicting of the direction of the Dow Jones Industrial Average.
+
+
+### Simple Moving Average Delta
+
+<p align="center">
+  <img src="docs/figures/SMA-delta-3.png" alt="SMA delta." width=600>
+  
+  <b>Figure 6.</b> When this feature becomes more volatile, the close price follows. This is a good indicator for a machine learning algorithm. It can also be seen that the close price percentage change loosely follows the line of the feature.
+</p>
+
+### Bollinger Bands <a name="bollinger_bands"></a>
+
+<p align="center">
+  <img src="docs/figures/Bollinger-bands-20-2.png" alt="Bollinger bands." width=600>
+  
+  <b>Figure 6.</b> When the 20-day simple moving average crosses the upper Bollinger band, the close price becomes more volatile. The stock close percentage change also loosely follows the lower Bollinger band.
 </p>
 
 ## Project Organisation <a name="project_organisation"></a>
