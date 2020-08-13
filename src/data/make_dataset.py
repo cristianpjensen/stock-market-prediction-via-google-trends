@@ -14,13 +14,29 @@ class Trends():
     """
     Pulls daily, weekly, and monthly data from Google Trends, and adjusts
     them so that it is weekly data which is relative to each other.
-    It does this based on the weekly and monthly data.
+
+    Attributes:
+        start_date (datetime.date): The start date from where to pull data.
+        end_date (datetime.date):
+        keyword (str):
+        keyword_url (str):
+        keyword_file (str):
+        daily (pandas.DataFrame): 
+        weekly (pandas.DataFrame):
+        monthly (pandas.DataFrame): 
+
     """
 
-    def __init__(self):
+    def __init__(self, start_date=datetime.date(2004, 1, 1),
+                 end_date=datetime.date.today()):
+        """
+        Args:
+            start_date (datetime.date): The start date from where to pull data.
+            end_date (datetime.date):
+        """
 
-        self.start_date = datetime.date(2004, 1, 1)
-        self.end_date = datetime.date.today()
+        self.start_date = start_date
+        self.end_date = end_date
 
         with open('src/data/keywords.txt', 'r') as f:
             for line in f:
