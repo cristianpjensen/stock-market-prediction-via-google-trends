@@ -17,13 +17,16 @@ class Trends():
 
     Attributes:
         start_date (datetime.date): The start date from where to pull data.
-        end_date (datetime.date):
-        keyword (str):
-        keyword_url (str):
-        keyword_file (str):
-        daily (pandas.DataFrame): 
-        weekly (pandas.DataFrame):
-        monthly (pandas.DataFrame): 
+        end_date (datetime.date): The end date to where to pull data.
+        keyword (str): Search term as one would search the term.
+        keyword_url (str): Search term with spaces replaced by %22.
+        keyword_file (str): Search term with spaces replace by underscores.
+        daily (pandas.DataFrame): DataFrame containing the daily data, which is 
+            being adjusted.
+        weekly (pandas.DataFrame): DataFrame containing the weekly data, which is
+            being adjusted.
+        monthly (pandas.DataFrame): DataFrame containing the monthly data, which
+            is being adjusted.
 
     """
 
@@ -32,7 +35,7 @@ class Trends():
         """
         Args:
             start_date (datetime.date): The start date from where to pull data.
-            end_date (datetime.date):
+            end_date (datetime.date): The end date to where to pull data.
         """
 
         self.start_date = start_date
