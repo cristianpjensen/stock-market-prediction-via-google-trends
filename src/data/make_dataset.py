@@ -25,11 +25,7 @@ class Trends():
         with open('src/data/keywords.txt', 'r') as f:
             for line in f:
                 self.keyword = line.strip()
-
-                # Spaces aren't allowed in URLs.
                 self.keyword_url = self.keyword.replace(' ', '%20')
-
-                # Files shouldn't contain spaces.
                 self.keyword_file = self.keyword.replace(' ', '_')
 
                 # Make sure that the keyword hasn't already been downloaded.
@@ -56,10 +52,10 @@ class Trends():
 
                         break
                     except:
-                        i += 1
+                    i += 1
 
-                        print('Error')
-                        sleep(120)
+                    print('Error')
+                    sleep(120)
 
     def pull_daily(self):
         """Pulls the daily data of the keyword specified from Google Trends."""
@@ -191,7 +187,7 @@ class Trends():
                 self.weekly.loc[i * 261, 'Adjusted'] = \
                     self.monthly.loc[i * 60, 'relative_frequency']
                 i += 1
-            except:
+            except ValueError:
                 break
 
         for i in range(len(self.weekly)):
@@ -243,7 +239,7 @@ class Trends():
                         self.daily.loc[i, 'Adjusted'] = self.weekly['Adjusted'].where(
                             self.weekly['Date'] == str(start_increment)).dropna().values[0]
                         imported = True
-                    except:
+                    except ValueError:
                         pass
                 else:
                     prc = float(self.daily['percentage_change'][i])
