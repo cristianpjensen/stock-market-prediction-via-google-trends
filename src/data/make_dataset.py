@@ -14,22 +14,37 @@ class Trends():
     """
     Pulls daily, weekly, and monthly data from Google Trends, and adjusts
     them so that it is weekly data which is relative to each other.
-    It does this based on the weekly and monthly data.
+
+    Attributes:
+        start_date (datetime.date): The start date from where to pull data.
+        end_date (datetime.date): The end date to where to pull data.
+        keyword (str): Search term as one would search the term.
+        keyword_url (str): Search term with spaces replaced by %22.
+        keyword_file (str): Search term with spaces replace by underscores.
+        daily (pandas.DataFrame): DataFrame containing the daily data, which is 
+            being adjusted.
+        weekly (pandas.DataFrame): DataFrame containing the weekly data, which is
+            being adjusted.
+        monthly (pandas.DataFrame): DataFrame containing the monthly data, which
+            is being adjusted.
+
     """
 
-    def __init__(self):
+    def __init__(self, start_date=datetime.date(2004, 1, 1),
+                 end_date=datetime.date.today()):
+        """
+        Args:
+            start_date (datetime.date): The start date from where to pull data.
+            end_date (datetime.date): The end date to where to pull data.
+        """
 
-        self.start_date = datetime.date(2004, 1, 1)
-        self.end_date = datetime.date.today()
+        self.start_date = start_date
+        self.end_date = end_date
 
         with open('src/data/keywords.txt', 'r') as f:
             for line in f:
                 self.keyword = line.strip()
-
-                # Spaces aren't allowed in URLs.
                 self.keyword_url = self.keyword.replace(' ', '%20')
-
-                # Files shouldn't contain spaces.
                 self.keyword_file = self.keyword.replace(' ', '_')
 
                 # Make sure that the keyword hasn't already been downloaded.
@@ -56,10 +71,10 @@ class Trends():
 
                         break
                     except:
-                        i += 1
+                    i += 1
 
-                        print('Error')
-                        sleep(120)
+                    print('Error')
+                    sleep(120)
 
     def pull_daily(self):
         """Pulls the daily data of the keyword specified from Google Trends."""
@@ -191,7 +206,7 @@ class Trends():
                 self.weekly.loc[i * 261, 'Adjusted'] = \
                     self.monthly.loc[i * 60, 'relative_frequency']
                 i += 1
-            except:
+            except ValueError:
                 break
 
         for i in range(len(self.weekly)):
@@ -243,7 +258,7 @@ class Trends():
                         self.daily.loc[i, 'Adjusted'] = self.weekly['Adjusted'].where(
                             self.weekly['Date'] == str(start_increment)).dropna().values[0]
                         imported = True
-                    except:
+                    except ValueError:
                         pass
                 else:
                     prc = float(self.daily['percentage_change'][i])
