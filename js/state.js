@@ -18,14 +18,14 @@ var svg = d3
 
 // Gridlines in Y-axis function.
 function make_y_gridlines(y, data) {
-  return d3.axisLeft(y).ticks(1).tickValues([data[0].close]);
+  return d3.axisLeft(y).ticks(1).tickValues([data[0].position]);
 }
 
 // Read the data.
-d3.csv("data/data.csv", function (data) {
-  // Convert Close to integer, else d3.max() doesn't work.
+d3.csv("data/state.csv", function (data) {
+  // Convert position to integer, else d3.max() doesn't work.
   data.forEach(function (d) {
-    d.close = parseInt(d.close);
+    d.position = parseInt(d.position);
   });
 
   // Add X axis --> it is a date format.
@@ -40,7 +40,7 @@ d3.csv("data/data.csv", function (data) {
 
   var y = d3
     .scaleLinear()
-    .domain([d3.min(data, (d) => d.close) * 0.75, d3.max(data, (d) => d.close)])
+    .domain([d3.min(data, (d) => d.position) * 0.75, d3.max(data, (d) => d.position)])
     .range([height, 100]);
 
   // Make the chart SVG.
@@ -131,7 +131,7 @@ d3.csv("data/data.csv", function (data) {
           return x(+parseTime(d.date));
         })
         .y(function (d) {
-          return y(+d.close);
+          return y(+d.position);
         })
     )
     .attr("stroke", foregroundColor)
@@ -139,7 +139,7 @@ d3.csv("data/data.csv", function (data) {
     .style("fill", "none");
 
   // The last value at the end of the line.
-  const lastValue = data[data.length - 1].close;
+  const lastValue = data[data.length - 1].position;
 
   const lineText = svg
     .append("text")
