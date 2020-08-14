@@ -104,18 +104,18 @@ d3.csv("data/state.csv", function (data) {
     .style("font-size", "9px")
     .style("font-weight", "300")
     .text(
-      "DJIA stock price data is used as a placeholder for now, because the machine learning model has not been deployed yet."
+      "The machine learning model was deployed on June 26th 2020. The data is being updated automatically by a GitHub workflow. The dotted line indicates the starting"
     );
 
-  // svg
-  //   .append("text")
-  //   .attr("x", -20)
-  //   .attr("y", height + 71)
-  //   .style("fill", foregroundColor)
-  //   .style("font-family", "Roboto, sans-serif")
-  //   .style("font-size", "9px")
-  //   .style("font-weight", "300")
-  //   .text("the model.");
+  svg
+    .append("text")
+    .attr("x", -20)
+    .attr("y", height + 71)
+    .style("fill", foregroundColor)
+    .style("font-family", "Roboto, sans-serif")
+    .style("font-size", "9px")
+    .style("font-weight", "300")
+    .text("point of the model.");
 
   // The line.
   svg
@@ -141,6 +141,8 @@ d3.csv("data/state.csv", function (data) {
   // The last value at the end of the line.
   const lastValue = data[data.length - 1].position;
 
+  console.log(lastValue)
+
   const lineText = svg
     .append("text")
     .style("fill", foregroundColor)
@@ -150,7 +152,7 @@ d3.csv("data/state.csv", function (data) {
     .attr("transform", "translate(600," + y(lastValue) + ")")
     .attr("x", 8)
     .attr("y", ".35em")
-    .text(lastValue.toFixed(2) + "%");
+    .text((lastValue - 100).toFixed(2) + "%");
 
   // Animate the path via scrolling.
   const path = d3.select("svg g g g path").data([data]);
