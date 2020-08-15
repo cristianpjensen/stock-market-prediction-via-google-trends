@@ -9,7 +9,7 @@
 
   [![Status](https://img.shields.io/badge/status-active-success.svg)]() 
   [![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
-  [![Website](https://img.shields.io/website?url=https%3A%2F%2Fcristianpjensen.github.io%2FStock-Market-Prediction-via-Google-Trends%2F)](https://cristianpjensen.github.io/Stock-Market-Prediction-via-Google-Trends/)
+  [![Website](https://img.shields.io/website?url=https%3A%2F%2Fcristianpjensen.github.io%2Fstock-market-prediction-via-google-trends%2F)](https://cristianpjensen.github.io/stock-market-prediction-via-google-trends/)
 
 </div>
 
