@@ -19,7 +19,7 @@ jobs:
       - name: Git checkout
         uses: actions/checkout@v2
         with:
-          ref: workflow-test
+          ref: webpage
 
       - name: Setup python
         uses: actions/setup-python@v1
@@ -41,4 +41,4 @@ jobs:
         uses: ad-m/github-push-action@v0.6.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: workflow-test
+          branch: webpage
