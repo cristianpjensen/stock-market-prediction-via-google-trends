@@ -104,7 +104,7 @@ d3.csv("data/state.csv", function (data) {
     .style("font-size", "9px")
     .style("font-weight", "300")
     .text(
-      "The machine learning model was deployed on June 26th 2020. The data is being updated automatically by a GitHub workflow. The dotted line indicates the starting"
+      "The machine learning model was deployed on July 8th 2020. The data is being updated automatically by a GitHub workflow. The dotted line indicates the starting"
     );
 
   svg
