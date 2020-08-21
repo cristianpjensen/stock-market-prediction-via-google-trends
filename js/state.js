@@ -23,11 +23,6 @@ function make_y_gridlines(y, data) {
 
 // Read the data.
 d3.csv("data/state.csv", function (data) {
-  // Convert position to integer, else d3.max() doesn't work.
-  data.forEach(function (d) {
-    d.position = parseInt(d.position);
-  });
-
   // Add X axis --> it is a date format.
   var parseTime = d3.timeParse("%Y-%m-%d");
 
