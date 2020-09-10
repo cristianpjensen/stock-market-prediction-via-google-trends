@@ -23,6 +23,10 @@ def main():
     trends_df.to_csv('data/stock_market.csv', index=False)
     state_df = pd.read_csv('data/state.csv')
 
+    if state_df.date[len(state_df)-1] == str(datetime.date.today() - 
+                                             relativedelta(days=1)):
+        return 0
+
     trends_df = append_missing_dates(trends_df)
 
     features_df = top_features(trends_df)
@@ -156,7 +160,7 @@ def pull_djia(start):
     """
     djia = yf.download('DJIA', start=start)
     djia['Pct_change'] = 1 + djia.Close.pct_change()
-    djia = djia[2:]
+    djia = djia[1:]
     djia = djia.drop(['Open', 'High', 'Low', 'Adj Close', 'Volume'], axis=1)
     
     return djia.reset_index()
