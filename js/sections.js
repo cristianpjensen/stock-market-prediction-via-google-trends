@@ -30,7 +30,7 @@ function scrollVis() {
 
       svg = svg
         .merge(svgE)
-        .classed("svg-container", true)
+        .classed("steps-svg", true)
         .attr("preserveAspectRatio", "xMinYMin meet")
         .attr("viewBox", "0 0 1000 600");
 

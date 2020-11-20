@@ -294,7 +294,16 @@ a:hover {
   text-align: center;
 }
 
-.svg-container {
+.steps-svg {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  padding-bottom: 20%; 
+  vertical-align: top;
+  overflow: hidden;
+}
+
+.state-svg {
   display: inline-block;
   position: relative;
   width: 100%;
@@ -310,6 +319,10 @@ a:hover {
 
   #outro {
     width: 100%;
+  }
+
+  .steps-svg {
+    opacity: 0;
   }
 }
 

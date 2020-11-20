@@ -11,7 +11,7 @@ var margin = { top: 100, right: 150, bottom: 100, left: 50 },
 var svg = d3
   .select("#vis0")
   .append("svg")
-  .classed("svg-container", true)
+  .classed("state-svg", true)
   .attr("preserveAspectRatio", "xMinYMin meet")
   .attr("viewBox", "0 0 800 600")
   .append("g")
@@ -46,7 +46,7 @@ d3.csv("data/state.csv", function (data) {
     .attr("class", "graph0")
     .style("font-size", "12px")
     .style("font-family", "Roboto, sans-serif")
-    .call(d3.axisBottom(x));
+    .call(d3.axisBottom(x).ticks(d3.timeMonth));
 
   // Add the Y-axis gridlines.
   svg
