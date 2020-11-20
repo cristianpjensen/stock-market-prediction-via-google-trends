@@ -30,8 +30,9 @@ function scrollVis() {
 
       svg = svg
         .merge(svgE)
-        .attr("width", width + margin.left + margin.right)
-        .attr("height", height + margin.top + margin.bottom);
+        .classed("svg-container", true)
+        .attr("preserveAspectRatio", "xMinYMin meet")
+        .attr("viewBox", "0 0 1000 600");
 
       g = svg
         .append("g")
