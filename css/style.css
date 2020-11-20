@@ -252,7 +252,8 @@ a:hover {
   margin: 4px 2px;
   cursor: pointer;
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-  -webkit-transition-duration: 0.4s; /* Safari */
+  -webkit-transition-duration: 0.4s;
+  -moz-transition-duration: 0.4s;
   transition-duration: 0.4s;
 }
 
@@ -300,4 +301,24 @@ a:hover {
   padding-bottom: 20%; 
   vertical-align: top;
   overflow: hidden;
+}
+
+@media screen and (max-width:629px) {
+  #intro {
+    width: 100%;
+  }
+
+  #outro {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width:629px) {
+  #intro {
+    width: 40%;
+  }
+
+  #outro {
+    width: 40%;
+  }
 }

@@ -137,8 +137,6 @@ d3.csv("data/state.csv", function (data) {
   // The last value at the end of the line.
   const lastValue = data[data.length - 1].position;
 
-  console.log(lastValue)
-
   const lineText = svg
     .append("text")
     .style("fill", foregroundColor)
