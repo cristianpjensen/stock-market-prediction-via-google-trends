@@ -927,7 +927,7 @@ function scrollVis() {
 function display(data) {
   var plot = scrollVis();
 
-  d3.select("#vis").datum(data).call(plot);
+  d3.select("#web-graphic").datum(data).call(plot);
 
   var scroll = scroller().container(d3.select("#graphic"));
 

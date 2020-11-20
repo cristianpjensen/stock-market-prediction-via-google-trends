@@ -9,7 +9,7 @@ var margin = { top: 100, right: 150, bottom: 100, left: 50 },
 
 // Append the svg object to the body of the page.
 var svg = d3
-  .select("#vis0")
+  .select("#state-graphic")
   .append("svg")
   .classed("state-svg", true)
   .attr("preserveAspectRatio", "xMinYMin meet")
@@ -179,19 +179,19 @@ d3.csv("data/state.csv", function (data) {
     const stopGraphs = 4450;
 
     if (scrollTop > startGraphs) {
-      document.getElementById("vis").style.position = "fixed";
-      document.getElementById("vis").style.top = "200px";
+      document.getElementById("web-graphic").style.position = "fixed";
+      document.getElementById("web-graphic").style.top = "200px";
     } else {
-      document.getElementById("vis").style.top = "2214px";
-      document.getElementById("vis").style.position = "absolute";
+      document.getElementById("web-graphic").style.top = "2214px";
+      document.getElementById("web-graphic").style.position = "absolute";
     }
 
     if (scrollTop > stopGraphs) {
-      document.getElementById("vis").style.top = "5562px";
-      document.getElementById("vis").style.position = "absolute";
+      document.getElementById("web-graphic").style.top = "5562px";
+      document.getElementById("web-graphic").style.position = "absolute";
     } else if (scrollTop > startGraphs) {
-      document.getElementById("vis").style.top = "200px";
-      document.getElementById("vis").style.position = "fixed";
+      document.getElementById("web-graphic").style.top = "200px";
+      document.getElementById("web-graphic").style.position = "fixed";
     }
 
     if (scrollFraction >= 1) {
