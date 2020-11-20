@@ -288,3 +288,12 @@ a:hover {
 #container2 {
   text-align: center;
 }
+
+.svg-container {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  padding-bottom: 25%; /* aspect ratio */
+  vertical-align: top;
+  overflow: hidden;
+}

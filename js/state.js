@@ -11,8 +11,9 @@ var margin = { top: 100, right: 150, bottom: 100, left: 50 },
 var svg = d3
   .select("#vis0")
   .append("svg")
-  .attr("width", width + margin.left + margin.right)
-  .attr("height", height + margin.top + margin.bottom)
+  .classed("svg-container", true)
+  .attr("preserveAspectRatio", "xMinYMin meet")
+  .attr("viewBox", "0 0 800 600")
   .append("g")
   .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
