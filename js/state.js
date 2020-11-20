@@ -43,7 +43,7 @@ d3.csv("data/state.csv", function (data) {
   svg
     .append("g")
     .attr("transform", "translate(0," + height + ")")
-    .attr("class", "graph0")
+    .attr("class", "state-graph")
     .style("font-size", "12px")
     .style("font-family", "Roboto, sans-serif")
     .call(d3.axisBottom(x).ticks(d3.timeMonth));
@@ -53,7 +53,7 @@ d3.csv("data/state.csv", function (data) {
     .append("g")
     .attr("stroke-dasharray", "5, 5")
     .attr("opacity", ".4")
-    .attr("class", "graph0")
+    .attr("class", "state-graph")
     .call(make_y_gridlines(y, data).tickSize(-width).tickFormat(""))
     .call((g) => g.select(".domain").remove());
 

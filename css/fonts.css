@@ -1,0 +1,23 @@
+@import url(//db.onlinewebfonts.com/c/0d39a4e3c36c494c84e2c38618bfed33?family=Publico+Text+Web);
+
+@font-face {
+  font-family: "Publico Text Web"; 
+  src: url("//db.onlinewebfonts.com/t/0d39a4e3c36c494c84e2c38618bfed33.eot"); 
+  src: url("//db.onlinewebfonts.com/t/0d39a4e3c36c494c84e2c38618bfed33.eot?#iefix") format("embedded-opentype"), 
+  url("//db.onlinewebfonts.com/t/0d39a4e3c36c494c84e2c38618bfed33.woff2") format("woff2"), 
+  url("//db.onlinewebfonts.com/t/0d39a4e3c36c494c84e2c38618bfed33.woff") format("woff"), 
+  url("//db.onlinewebfonts.com/t/0d39a4e3c36c494c84e2c38618bfed33.ttf") format("truetype"), 
+  url("//db.onlinewebfonts.com/t/0d39a4e3c36c494c84e2c38618bfed33.svg#Publico Text Web") format("svg"); 
+}
+
+@import url(//db.onlinewebfonts.com/c/e0ad94902a160013fafd2403e5e638cb?family=Canela);
+
+@font-face {
+  font-family: "Canela"; 
+  src: url("//db.onlinewebfonts.com/t/e0ad94902a160013fafd2403e5e638cb.eot"); 
+  src: url("//db.onlinewebfonts.com/t/e0ad94902a160013fafd2403e5e638cb.eot?#iefix") format("embedded-opentype"), 
+  url("//db.onlinewebfonts.com/t/e0ad94902a160013fafd2403e5e638cb.woff2") format("woff2"), 
+  url("//db.onlinewebfonts.com/t/e0ad94902a160013fafd2403e5e638cb.woff") format("woff"), 
+  url("//db.onlinewebfonts.com/t/e0ad94902a160013fafd2403e5e638cb.ttf") format("truetype"), 
+  url("//db.onlinewebfonts.com/t/e0ad94902a160013fafd2403e5e638cb.svg#Canela") format("svg"); 
+}
