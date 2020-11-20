@@ -60,6 +60,10 @@ p {
   font-weight: 300;
   line-height: 1.6em;
   color: var(--background);
+  text-align: left;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
 }
 
 a {
@@ -293,7 +297,7 @@ a:hover {
   display: inline-block;
   position: relative;
   width: 100%;
-  padding-bottom: 25%; /* aspect ratio */
+  padding-bottom: 20%; 
   vertical-align: top;
   overflow: hidden;
 }
