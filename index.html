@@ -5,6 +5,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="css/style.css" />
+
+    <!-- Fonts. -->
     <link
       href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300&display=swap"
       rel="stylesheet"
@@ -19,38 +21,42 @@
       rel="stylesheet"
       type="text/css"
     />
+
+    <!-- Logo. -->
     <link
       href="images/wob_njord_logo.svg"
       rel="icon"
     />
 
-    <script src="js/d3.js"></script>
-    <script src="js/d3-simple-slider.js"></script>
-
-    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
-    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-
-    <meta
-      name="description"
-      content="Google Trends data has the ability to forecast Stock Market movements - this is used by a Machine Learning model."
-    />
+    <!-- Keywords. -->
     <meta
       name="new_keywords"
       content="google trends, machine learning, artificial intelligence, data, data science"
     />
 
+    <!-- Title. -->
     <meta
       property="og:title"
       content="Njord - Stock Market Prediction via Google Trends"
     />
+
+    <!-- URL. -->
     <meta
       property="og:url"
-      content="https://cristianpjensen.github.io/Stock-Market-Prediction-via-Google-Trends/"
+      content="https://cristianpjensen.github.io"
     />
+
+    <!-- Description. -->
     <meta
       property="og:description"
       content="Njord attempts to predict future stock prices based on Google Trends data - using machine learning."
     />
+
+    <meta
+      name="description"
+      content="Google Trends data has the ability to forecast Stock Market movements - this is used by a Machine Learning model."
+    />
+
     <meta property="og:type" content="article" />
     <meta property="og:locale" content="en_US" />
 
@@ -58,202 +64,151 @@
   </head>
 
   <body style="background-color: #f2f3f4;">
-    <div id="container">
+
+    <!-- Introduction. -->
+    <div class="intro">
       <div id="intro">
+
         <h1>
-          <a
-            href="https://github.com/cristianpjensen/Stock-Market-Prediction-via-Google-Trends"
+          <a href="https://github.com/cristianpjensen/Stock-Market-Prediction-via-Google-Trends"
             target="_blank"
-            rel="noopener noreferrer"
-            >NJORD</a
-          >
+            rel="noopener noreferrer">
+            NJORD
+          </a>
         </h1>
-        <img
-          src="images/wob_njord_logo.svg"
+
+        <img src="images/wob_njord_logo.svg"
           alt="Njord logo"
           width="300"
-          height="300"
-        />
-        <p class="large">PREDICT</p>
-        <p class="large">THE MARKET</p>
-        <p class="small">WITH</p>
-        <p class="large">GOOGLE TRENDS</p>
-        <br /><br /><br /><br /><br /><br /><br />
-        <p class="desc">
-          Njord attempts to predict future stock prices based on Google Trends
-          data,<br />using machine learning.
-        </p>
-        <br /><br /><br /><br /><br /><br /><br />
-        <p id="first_paragraph">
-          Stock market prediction is the act of trying to determine the future
-          value of a company stock or other financial instrument traded on an
-          exchange. The successful prediction of a stock's future price could
-          yield significant profit. With the advent of the digital computer,
-          stock market prediction has since moved into the technological realm.
-          The most prominent technique involves the use of artificial neural
-          networks. ANNs can be thought of as mathematical function
-          approximators.
-        </p>
-        <br /><br />
-        <p>
-          In 2011, <a
-            href="https://www.nature.com/articles/srep01684?__hstc=113740504.2a1e835c34ab7bf88e972fdd7a7debc8.1424476800061.1424476800062.1424476800063.1&__hssc=113740504.1.1424476800064&__hsfp=3972014050"
-            target="_blank"
-            rel="noopener noreferrer"
-            >there was experimentation with Google Trends data to predict the
-            stock market.</a>
-          A correlation between the data of multiple search terms and the stock
-          market price had been found. This is the research upon which Njord is
-          based. In this research 98 financial words were found, which had some
-          kind of correlation with the stock price of the Dow Jones Industrial
-          Average. Njord takes the search data for these words and feeds them
-          into a machine learning algorithm. Based on this data, Njord
-          attempts to determine whether the stock price of the Dow Jones
-          Industrial Average will go up (1) or down (0).
-        </p>
-        <br /><br /><br /><br /><br /><br />
-        <p style="text-align: center; font-family: Roboto; font-weight: 400;">
-          by
-          <a
-            href="https://github.com/cristianpjensen"
-            target="_blank"
-            rel="noopener noreferrer"
-            >Cristian Perez Jensen</a
-          >
-        </p>
-        <br /><br /><br /><br /><br /><br /><br /><br />
-        <div id="vis0"></div>
+          height="300">
+
+        <div id="title">
+          <div class="large">PREDICT</div>
+          <div class="large">THE MARKET</div>
+          <div class="small">WITH</div>
+          <div class="large">GOOGLE TRENDS</div>
+        </div>
+
+        <div class="desc"> Njord attempts to predict future stock prices based on Google Trends data, <br> using machine learning. </div>
+
+        <p id="first_paragraph"> Stock market prediction is the act of trying to determine the future value of a company stock or other financial instrument traded on an exchange. The successful prediction of a stock's future price could yield significant profit. With the advent of the digital computer, stock market prediction has since moved into the technological realm. The most prominent technique involves the use of artificial neural networks. ANNs can be thought of as mathematical function approximators. </p>
+
+        <p> In 2011, <a href="https://www.nature.com/articles/srep01684?__hstc=113740504.2a1e835c34ab7bf88e972fdd7a7debc8.1424476800061.1424476800062.1424476800063.1&__hssc=113740504.1.1424476800064&__hsfp=3972014050" target="_blank"rel="noopener noreferrer"> there was experimentation with Google Trends data to predict the stock market.</a> A correlation between the data of multiple search terms and the stock market price had been found. This is the research upon which Njord is based. In this research 98 financial words were found, which had some kind of correlation with the stock price of the Dow Jones Industrial Average. Njord takes the search data for these words and feeds them into a machine learning algorithm. Based on this data, Njord attempts to determine whether the stock price of the Dow Jones Industrial Average will go up (1) or down (0). </p>
+
+        <p style="text-align: center; font-family: Roboto; font-weight: 400; margin-top: 2%;"> by <a href="https://github.com/cristianpjensen" target="_blank" rel="noopener noreferrer"> Cristian Perez Jensen </a> </p>
+
+        <!-- Graph of the current state of the algorithm. -->
+        <div id="state-graphic"></div>
+
       </div>
     </div>
-    <div class="container">
+
+    <!-- Screens larger than 629px width. -->
+    <div id="web">
       <div id="graphic">
         <div id="sections">
+
           <h2>Needed Adjustments</h2>
+
           <section class="step">
             <h3>Unadjusted Data</h3>
-            <p>
-              To actually use the data—for feeding to the machine learning
-              algorithm—the data first had to be adjusted. This was needed for
-              two reasons: all data is relative within it's timeframe, and daily
-              data is only available in 6-month increments.
-            </p>
+
+            <p>To actually use the data—for feeding to the machine learningalgorithm—the data first had to be adjusted. This was needed fortwo reasons: all data is relative within it's timeframe, and daily data is only available in 6-month increments.</p>
           </section>
+
           <section class="step">
-            <p>
-              For example, this is the unadjusted daily data for the search term
-              <em>stock market</em>.
-            </p>
+            <p>For example, this is the unadjusted daily data for the search term <em>stock market</em>. </p>
           </section>
+
           <section class="step">
-            <p>
-              As you can see, every 6-month increment, it resets. This is
-              because daily data is only available within that timeframe.
-            </p>
+            <p> As you can see, every 6-month increment, it resets. This is because daily data is only available within that timeframe. </p>
           </section>
+
           <section class="step">
             <h3>Adjusted Data</h3>
-            <p>
-              Based on the restrictions, adjustments had to be made. In order to
-              eliminate these restrictions, three steps had to be taken.
-            </p>
+
+            <p> Based on the restrictions, adjustments had to be made. In order to eliminate these restrictions, three steps had to be taken. </p>
           </section>
+
           <section class="step">
-            <p>
-              Step 1 — Compute the percentage changes between all unadjusted
-              daily datapoints.
-            </p>
+            <p> Step 1 — Compute the percentage changes between all unadjusted daily datapoints. </p>
           </section>
+
           <section class="step">
-            <p>
-              Step 2 — Insert weekly datapoints into the adjusted data at their
-              corresponding place, and compute the data in between.
-            </p>
+            <p> Step 2 — Insert weekly datapoints into the adjusted data at their corresponding place, and compute the data in between. </p>
           </section>
+
           <section class="step">
-            <p>
-              Step 3 — Divide the adjusted data by the maximum adjustment
-              datapoint.
-            </p>
+            <p> Step 3 — Divide the adjusted data by the maximum adjustment datapoint. </p>
           </section>
+
           <section class="step">
-            <p>
-              For example, this is the adjusted daily data for the search term
-              <em>stock market</em>.
-            </p>
+            <p> For example, this is the adjusted daily data for the search term <em>stock market</em>. </p>
           </section>
+
           <section class="step">
             <h3>Monthly Data</h3>
-            <p>
-              In order to validate that the adjusted daily data is indeed
-              correct, we can compare it to the monthly data. The monthly data
-              can be used for validation, because it is available for the entire
-              timeframe of Google Trends, without any adjustments.
-            </p>
-            <p>
-              As you can see, the adjusted daily data certainly correlates with
-              the monthly data. However, some days shoot up, because of an
-              outlier. This causes the spike to be higher than in the monthly
-              data, but that is only for that one day. Afterwards, it settles,
-              which is why the average for the month is lower, and it does not
-              cause a spike in the monthly data.
-            </p>
+
+            <p> In order to validate that the adjusted daily data is indeed correct, we can compare it to the monthly data. The monthly data can be used for validation, because it is available for the entire timeframe of Google Trends, without any adjustments. </p>
+
+            <p>As you can see, the adjusted daily data certainly correlates with the monthly data. However, some days shoot up, because of an outlier. This causes the spike to be higher than in the monthly data, but that is only for that one day. Afterwards, it settles, which is why the average for the month is lower, and it does not cause a spike in the monthly data. </p>
           </section>
+
           <section class="step">
             <h3>Explore</h3>
+
             <p>Play around with 96 financial search terms.</p>
-            <br />
+
+            <br>
+
+            <!-- Slider. -->
             <p style="font-size: 12px;"><strong>FILTER BY DATE</strong></p>
             <div id="dateSlider"></div>
-            <br /><br />
+            <br> <br>
             <p style="font-size: 12px;"><strong>FIND A SEARCH TERM</strong></p>
-            <section>
-              <input
-                type="text"
+
+            <!-- Keyword selection. -->
+            <section id="keyword-selection">
+              <input type="text"
                 id="kwInput"
                 onkeyup="scrollVis.setupVis.kwFunction();"
-                placeholder="Search for a term..."
-              />
+                placeholder="Search for a term...">
             </section>
-            <br /><br /><br /><br />
-            <button
-              class="stock-button"
+
+            <button class="stock-button"
               onclick="scrollVis.setupVis.stockFunction();">
               COMPARE TO THE STOCK MARKET
             </button>
           </section>
+
         </div>
-        <div id="vis"></div>
+
+        <!-- Main graphic for the web version. -->
+        <div id="web-graphic"></div>
+
       </div>
     </div>
-    <div id="container1">
+
+    <!-- Screens smaller than 629px width. -->
+    <div id="mobile">
+
+    </div>
+
+    <!-- Concluding text. -->
+    <div class="outro">
       <div id="outro">
-        <p>
-          In conclusion, Google Trends has the ability to predict major dips in
-          the market (using general financial words), however when attempting to
-          predict small changes in the market, it struggles. E.g. the housing
-          market crisis of 2008 was able to be predicted by the Google Trends
-          method (you can see the phenomenon by filtering by date
-          <em>2008—2010</em> and searching for the search term
-          <em>stock market</em>).
-        </p>
-        <br /><br />
-        <p>
-          In a future project, I would like to explore the ability of Google
-          Trends to predict the smaller changes in the market. For example, by
-          taking the hourly data for the search term <em>TSLA</em>, and the
-          stock price data for that ticker, and investigate whether this would
-          be a viable trading strategy.
-        </p>
-        <br /><br />
-        <hr />
-        <br />
-        <div id="container2">
-          <a
-            href="https://github.com/cristianpjensen"
+        <p> In conclusion, Google Trends has the ability to predict major dips in the market (using general financial words), however when attempting to predict small changes in the market, it struggles. E.g. the housing market crisis of 2008 was able to be predicted by the Google Trends method (you can see the phenomenon by filtering by date <em>2008—2010</em> and searching for the search term <em>stock market</em>). </p>
+
+        <p> In a future project, I would like to explore the ability of Google Trends to predict the smaller changes in the market. For example, by taking the hourly data for the search term <em>TSLA</em>, and the stock price data for that ticker, and investigate whether this would be a viable trading strategy. </p>
+
+        <hr>
+
+        <div class="links">
+          <a href="https://github.com/cristianpjensen"
             target="_blank"
-            rel="noopener noreferrer"
-            ><svg
-              xmlns="http://www.w3.org/2000/svg"
+            rel="noopener noreferrer">
+
+            <svg xmlns="http://www.w3.org/2000/svg"
               class="icon icon-tabler icon-tabler-brand-github"
               width="24"
               height="24"
@@ -262,19 +217,20 @@
               stroke="#131516"
               fill="none"
               stroke-linecap="round"
-              stroke-linejoin="round"
-            >
+              stroke-linejoin="round">
+
               <path stroke="none" d="M0 0h24v24H0z" />
-              <path
-                d="M9 19c-4.286 1.35-4.286-2.55-6-3m12 5v-3.5c0-1 .099-1.405-.5-2 2.791-.3 5.5-1.366 5.5-6.04a4.567 4.567 0 0 0 -1.333 -3.21 4.192 4.192 0 00-.08-3.227s-1.05-.3-3.476 1.267a12.334 12.334 0 0 0 -6.222 0C6.462 2.723 5.413 3.023 5.413 3.023a4.192 4.192 0 0 0 -.08 3.227A4.566 4.566 0 004 9.486c0 4.64 2.709 5.68 5.5 6.014-.591.589-.56 1.183-.5 2V21"
-              /></svg
-          ></a>
-          <a
-            href="https://github.com/cristianpjensen/Njord"
+              <path d="M9 19c-4.286 1.35-4.286-2.55-6-3m12 5v-3.5c0-1 .099-1.405-.5-2 2.791-.3 5.5-1.366 5.5-6.04a4.567 4.567 0 0 0 -1.333 -3.21 4.192 4.192 0 00-.08-3.227s-1.05-.3-3.476 1.267a12.334 12.334 0 0 0 -6.222 0C6.462 2.723 5.413 3.023 5.413 3.023a4.192 4.192 0 0 0 -.08 3.227A4.566 4.566 0 004 9.486c0 4.64 2.709 5.68 5.5 6.014-.591.589-.56 1.183-.5 2V21"/>
+
+            </svg>
+
+          </a>
+
+          <a href="https://github.com/cristianpjensen/Njord"
             target="_blank"
-            rel="noopener noreferrer"
-            ><svg
-              xmlns="http://www.w3.org/2000/svg"
+            rel="noopener noreferrer">
+
+            <svg xmlns="http://www.w3.org/2000/svg"
               class="icon icon-tabler icon-tabler-code"
               width="24"
               height="24"
@@ -283,21 +239,34 @@
               stroke="#131516"
               fill="none"
               stroke-linecap="round"
-              stroke-linejoin="round"
-            >
+              stroke-linejoin="round">
+
               <path stroke="none" d="M0 0h24v24H0z" />
               <polyline points="7 8 3 12 7 16" />
               <polyline points="17 8 21 12 17 16" />
-              <line x1="14" y1="4" x2="10" y2="20" /></svg
-          ></a>
-          <br /><br /><br /><br />
+              <line x1="14" y1="4" x2="10" y2="20" />
+
+            </svg>
+
+          </a>
+
         </div>
+
       </div>
+
     </div>
 
-    <script src="js/scroller.js"></script>
+    <!-- Required scripts. -->
+    <script src="js/req/d3.js"></script>
+    <script src="js/req/d3-simple-slider.js"></script>
+    <script src="js/req/scroller.js"></script>
+    <script src="js/req/jquery.js"></script>
+    <script src="js/req/jquery-ui.js"></script>
+    <script src="js/req/autocomplete.js"></script>
+
+    <!-- Graphic scripts. -->
     <script src="js/sections.js"></script>
     <script src="js/state.js"></script>
-    <script src="js/autocomplete.js"></script>
+
   </body>
 </html>
