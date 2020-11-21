@@ -49,6 +49,33 @@ var monthlySvg = d3
   .append("g")
   .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
+var step1Table = d3
+  .select("#step1-table")
+  .append("svg")
+  .classed("mobile-svg", true)
+  .attr("preserveAspectRatio", "xMinYMin meet")
+  .attr("viewBox", "0 0 1000 600")
+  .append("g")
+  .attr("transform", "translate(" + (margin.left - 50) + "," + margin.top + ")");
+
+var step2Table = d3
+  .select("#step2-table")
+  .append("svg")
+  .classed("mobile-svg", true)
+  .attr("preserveAspectRatio", "xMinYMin meet")
+  .attr("viewBox", "0 0 1000 600")
+  .append("g")
+  .attr("transform", "translate(" + (margin.left - 50) + "," + margin.top + ")");
+
+var step3Table = d3
+  .select("#step3-table")
+  .append("svg")
+  .classed("mobile-svg", true)
+  .attr("preserveAspectRatio", "xMinYMin meet")
+  .attr("viewBox", "0 0 1000 600")
+  .append("g")
+  .attr("transform", "translate(" + (margin.left - 50) + "," + margin.top + ")");
+
 // Gridlines in Y-axis function.
 function make_y_gridlines(y) {
   return d3.axisLeft(y).ticks(4).tickValues([25, 50, 75, 100]);
@@ -570,5 +597,211 @@ d3.csv("data/data.csv", function (data) {
     .attr("stroke", "#71A9F7")
     .style("stroke-width", 1)
     .style("fill", "none");
+
+  const tableLength = 18;
+
+  step1Table.append("text")
+    .attr("x", 0)
+    .attr("y", -(margin.top / 2) + 80)
+    .style("font-family", "Roboto, sans-serif")
+    .style("font-size", "18px")
+    .style("font-weight", "700")
+    .style("fill", backgroundColor)
+    .text("Date");
+
+  step1Table.append("text")
+    .attr("x", 150)
+    .attr("y", -(margin.top / 2) + 80)
+    .style("font-family", "Roboto, sans-serif")
+    .style("font-size", "18px")
+    .style("font-weight", "700")
+    .style("fill", backgroundColor)
+    .text("Unadjusted");
+
+  for (var i = 0; i < tableLength; i++) {
+    step1Table.append("text")
+      .attr("x", 0)
+      .attr("y", -(margin.top / 2) + 120 + i * 25)
+      .style("font-family", "Roboto, sans-serif")
+      .style("font-size", "16px")
+      .style("font-weight", "300")
+      .style("fill", backgroundColor)
+      .text(data[i].date);
+    
+    step1Table.append("text")
+      .attr("x", 150)
+      .attr("y", -(margin.top / 2) + 120 + i * 25)
+      .style("font-family", "Roboto, sans-serif")
+      .style("font-size", "16px")
+      .style("font-weight", "300")
+      .style("fill", backgroundColor)
+      .text(data[i].unadjusted);
+  }
+
+  step2Table.append("text")
+    .attr("x", 0)
+    .attr("y", -(margin.top / 2) + 80)
+    .style("font-family", "Roboto, sans-serif")
+    .style("font-size", "18px")
+    .style("font-weight", "700")
+    .style("fill", backgroundColor)
+    .text("Date");
+
+  step2Table.append("text")
+    .attr("x", 150)
+    .attr("y", -(margin.top / 2) + 80)
+    .style("font-family", "Roboto, sans-serif")
+    .style("font-size", "18px")
+    .style("font-weight", "700")
+    .style("fill", backgroundColor)
+    .text("Unadjusted");
+
+  step2Table.append("text")
+    .attr("x", 300)
+    .attr("y", -(margin.top / 2) + 80)
+    .style("font-family", "Roboto, sans-serif")
+    .style("font-size", "18px")
+    .style("font-weight", "700")
+    .style("fill", backgroundColor)
+    .text("Percentage Change");
+
+  step2Table.append("text")
+    .attr("x", 500)
+    .attr("y", -(margin.top / 2) + 80)
+    .style("font-family", "Roboto, sans-serif")
+    .style("font-size", "18px")
+    .style("font-weight", "700")
+    .style("fill", backgroundColor)
+    .text("Adjusted");
+
+  for (var i = 0; i < tableLength; i++) {
+    step2Table.append("text")
+      .attr("x", 0)
+      .attr("y", -(margin.top / 2) + 120 + i * 25)
+      .style("font-family", "Roboto, sans-serif")
+      .style("font-size", "16px")
+      .style("font-weight", "300")
+      .style("fill", backgroundColor)
+      .text(data[i].date);
+    
+    step2Table.append("text")
+      .attr("x", 150)
+      .attr("y", -(margin.top / 2) + 120 + i * 25)
+      .style("font-family", "Roboto, sans-serif")
+      .style("font-size", "16px")
+      .style("font-weight", "300")
+      .style("fill", backgroundColor)
+      .text(data[i].unadjusted);
+
+    step2Table.append("text")
+      .attr("x", 300)
+      .attr("y", -(margin.top / 2) + 120 + i * 25)
+      .style("font-family", "Roboto, sans-serif")
+      .style("font-size", "16px")
+      .style("font-weight", "300")
+      .style("fill", backgroundColor)
+      .text(data[i].pct_change);
+
+    step2Table.append("text")
+      .attr("x", 500)
+      .attr("y", -(margin.top / 2) + 120 + i * 25)
+      .style("font-family", "Roboto, sans-serif")
+      .style("font-size", "16px")
+      .style("font-weight", "300")
+      .style("fill", backgroundColor)
+      .text(data[i].adjusted);
+  }
+
+  step3Table.append("text")
+    .attr("x", 0)
+    .attr("y", -(margin.top / 2) + 80)
+    .style("font-family", "Roboto, sans-serif")
+    .style("font-size", "18px")
+    .style("font-weight", "700")
+    .style("fill", backgroundColor)
+    .text("Date");
+
+  step3Table.append("text")
+    .attr("x", 150)
+    .attr("y", -(margin.top / 2) + 80)
+    .style("font-family", "Roboto, sans-serif")
+    .style("font-size", "18px")
+    .style("font-weight", "700")
+    .style("fill", backgroundColor)
+    .text("Unadjusted");
+
+  step3Table.append("text")
+    .attr("x", 300)
+    .attr("y", -(margin.top / 2) + 80)
+    .style("font-family", "Roboto, sans-serif")
+    .style("font-size", "18px")
+    .style("font-weight", "700")
+    .style("fill", backgroundColor)
+    .text("Percentage Change");
+
+  step3Table.append("text")
+    .attr("x", 500)
+    .attr("y", -(margin.top / 2) + 80)
+    .style("font-family", "Roboto, sans-serif")
+    .style("font-size", "18px")
+    .style("font-weight", "700")
+    .style("fill", backgroundColor)
+    .text("Adjusted");
+
+  step3Table.append("text")
+    .attr("x", 650)
+    .attr("y", -(margin.top / 2) + 80)
+    .style("font-family", "Roboto, sans-serif")
+    .style("font-size", "18px")
+    .style("font-weight", "700")
+    .style("fill", backgroundColor)
+    .text("Normalised");
+
+  for (var i = 0; i < tableLength; i++) {
+    step3Table.append("text")
+      .attr("x", 0)
+      .attr("y", -(margin.top / 2) + 120 + i * 25)
+      .style("font-family", "Roboto, sans-serif")
+      .style("font-size", "16px")
+      .style("font-weight", "300")
+      .style("fill", backgroundColor)
+      .text(data[i].date);
+    
+    step3Table.append("text")
+      .attr("x", 150)
+      .attr("y", -(margin.top / 2) + 120 + i * 25)
+      .style("font-family", "Roboto, sans-serif")
+      .style("font-size", "16px")
+      .style("font-weight", "300")
+      .style("fill", backgroundColor)
+      .text(data[i].unadjusted);
+
+    step3Table.append("text")
+      .attr("x", 300)
+      .attr("y", -(margin.top / 2) + 120 + i * 25)
+      .style("font-family", "Roboto, sans-serif")
+      .style("font-size", "16px")
+      .style("font-weight", "300")
+      .style("fill", backgroundColor)
+      .text(data[i].pct_change);
+
+    step3Table.append("text")
+      .attr("x", 500)
+      .attr("y", -(margin.top / 2) + 120 + i * 25)
+      .style("font-family", "Roboto, sans-serif")
+      .style("font-size", "16px")
+      .style("font-weight", "300")
+      .style("fill", backgroundColor)
+      .text(data[i].adjusted);
+
+    step3Table.append("text")
+      .attr("x", 650)
+      .attr("y", -(margin.top / 2) + 120 + i * 25)
+      .style("font-family", "Roboto, sans-serif")
+      .style("font-size", "16px")
+      .style("font-weight", "300")
+      .style("fill", backgroundColor)
+      .text(data[i].normalised);
+  }
 
 });
