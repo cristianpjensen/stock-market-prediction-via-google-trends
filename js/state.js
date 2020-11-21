@@ -3,7 +3,7 @@ const foregroundColor = "#f2f3f4";
 const backgroundColor = "#131516";
 
 // Set the dimensions and margins of the graph.
-var margin = { top: 100, right: 150, bottom: 100, left: 50 },
+var margin = { top: 100, right: 100, bottom: 100, left: 100 },
   width = 800 - margin.left - margin.right,
   height = 600 - margin.top - margin.bottom;
 
@@ -18,7 +18,7 @@ var svg = d3
   .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 // Gridlines in Y-axis function.
-function make_y_gridlines(y, data) {
+function make_y_gridlines_state(y, data) {
   return d3.axisLeft(y).ticks(1).tickValues([data[0].position]);
 }
 
@@ -54,7 +54,7 @@ d3.csv("data/state.csv", function (data) {
     .attr("stroke-dasharray", "5, 5")
     .attr("opacity", ".4")
     .attr("class", "state-graph")
-    .call(make_y_gridlines(y, data).tickSize(-width).tickFormat(""))
+    .call(make_y_gridlines_state(y, data).tickSize(-width).tickFormat(""))
     .call((g) => g.select(".domain").remove());
 
   // Text label for the Y-axis.

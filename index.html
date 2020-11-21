@@ -76,7 +76,7 @@
           <div class="large">GOOGLE TRENDS</div>
         </div>
 
-        <div class="desc"> Njord attempts to predict future stock prices based on Google Trends data, <br> using machine learning. </div>
+        <div class="desc"> Njord attempts to predict future stock prices based on Google Trends data, using machine learning. </div>
 
         <p id="first_paragraph"> Stock market prediction is the act of trying to determine the future value of a company stock or other financial instrument traded on an exchange. The successful prediction of a stock's future price could yield significant profit. With the advent of the digital computer, stock market prediction has since moved into the technological realm. The most prominent technique involves the use of artificial neural networks. ANNs can be thought of as mathematical function approximators. </p>
 
@@ -100,7 +100,7 @@
           <section class="step">
             <h3>Unadjusted Data</h3>
 
-            <p>To actually use the data—for feeding to the machine learningalgorithm—the data first had to be adjusted. This was needed fortwo reasons: all data is relative within it's timeframe, and daily data is only available in 6-month increments.</p>
+            <p>To actually use the data — for feeding to the machine learning algorithm — the data first had to be adjusted. This was needed for two reasons: all data is relative within it's timeframe, and daily data is only available in 6-month increments.</p>
           </section>
 
           <section class="step">
@@ -179,6 +179,77 @@
     <!-- Screens smaller than 629px width. -->
     <div id="mobile">
 
+      <section class="mobile-step">
+        <h2>Needed Adjustments</h2>
+        <h3>Unadjusted Data</h3>
+
+        <p>To actually use the data — for feeding to the machine learning algorithm — the data first had to be adjusted. This was needed for two reasons: all data is relative within it's timeframe, and daily data is only available in 6-month increments.</p>
+      </section>
+
+      <div id="empty-graphic"></div>
+
+      <hr class="mobile">
+
+      <section class="mobile-step">
+        <p>For example, this is the unadjusted daily data for the search term <em>stock market</em>. </p>
+      </section>
+
+      <div id="unadjusted-graphic"></div>
+
+      <hr class="mobile">
+
+      <section class="mobile-step">
+        <p> As you can see, every 6-month increment, it resets. This is because daily data is only available within that timeframe. </p>
+      </section>
+
+      <div id="increment-graphic"></div>
+
+      <hr class="mobile">
+
+      <section class="mobile-step">
+        <h3>Adjusted Data</h3>
+
+        <p> Based on the restrictions, adjustments had to be made. In order to eliminate these restrictions, three steps had to be taken. </p>
+      </section>
+
+      <section class="mobile-step">
+        <p> Step 1 — Compute the percentage changes between all unadjusted daily datapoints. </p>
+      </section>
+
+      <hr class="mobile">
+
+      <section class="mobile-step">
+        <p> Step 2 — Insert weekly datapoints into the adjusted data at their corresponding place, and compute the data in between. </p>
+      </section>
+
+      <hr class="mobile">
+
+      <section class="mobile-step">
+        <p> Step 3 — Divide the adjusted data by the maximum adjustment datapoint. </p>
+      </section>
+
+      <hr class="mobile">
+
+      <section class="mobile-step">
+        <p> For example, this is the adjusted daily data for the search term <em>stock market</em>. </p>
+      </section>
+
+      <div id="adjusted-graphic"></div>
+
+      <hr class="mobile">
+
+      <section class="mobile-step">
+        <h3>Monthly Data</h3>
+
+        <p> In order to validate that the adjusted daily data is indeed correct, we can compare it to the monthly data. The monthly data can be used for validation, because it is available for the entire timeframe of Google Trends, without any adjustments. </p>
+
+        <p>As you can see, the adjusted daily data certainly correlates with the monthly data. However, some days shoot up, because of an outlier. This causes the spike to be higher than in the monthly data, but that is only for that one day. Afterwards, it settles, which is why the average for the month is lower, and it does not cause a spike in the monthly data. </p>
+      </section>
+
+      <div id="monthly-graphic"></div>
+
+      <hr class="mobile">
+
     </div>
 
     <!-- Concluding text. -->
@@ -188,7 +259,7 @@
 
         <p> In a future project, I would like to explore the ability of Google Trends to predict the smaller changes in the market. For example, by taking the hourly data for the search term <em>TSLA</em>, and the stock price data for that ticker, and investigate whether this would be a viable trading strategy. </p>
 
-        <hr>
+        <hr class="mobile">
 
         <div class="links">
           <a href="https://github.com/cristianpjensen"
@@ -253,6 +324,7 @@
 
     <!-- Graphic scripts. -->
     <script src="js/sections.js"></script>
+    <script src="js/mobile.js"></script>
     <script src="js/state.js"></script>
 
   </body>
