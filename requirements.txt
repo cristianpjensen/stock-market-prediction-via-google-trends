@@ -2,7 +2,7 @@ DateTime==4.3
 pandas==1.0.4
 python-dateutil==2.8.1
 requests==2.23.0
-urllib3==1.25.9
+urllib3==1.26.5
 yfinance==0.1.54
 jupyter==1.0.0
 xgboost==1.1.0
