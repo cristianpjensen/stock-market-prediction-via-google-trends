@@ -1,10 +1,3 @@
-<p align="center">
-  <a href="" rel="noopener">
- <img width=200px height=200px src="docs/njord_logo.svg" alt="Project logo"></a>
-</p>
-
-<h3 align="center">Njord</h3>
-
 <div align="center">
 
   [![Status](https://img.shields.io/badge/status-active-success.svg)]() 
@@ -15,15 +8,12 @@
 
 ---
 
-<p align="center"> Njord attempts to predict future stock prices based on Google Trends data—using machine learning.
+<p align="center"> Attempt to predict future stock prices based on Google Trends data.
     <br> 
 </p>
 
 ## Table of Contents
 - [About](#about)
-- [Project Status](#project_status)
-- [Installation](#installation)
-- [Reflection](#reflection)
 - [Results](#results)
   - [MLPClassifier](#mlp)
   - [XGBoost](#xgboost)
@@ -46,19 +36,7 @@
 
 ## About <a name = "about"></a>
 
-The data used by Njord is downloaded from [Google Trends](https://trends.google.com). The concept for this project came from research by Tobias Preis, Helen Susannah Moat, and H. Eugene Stanley, ["Quantifying Trading Behavior in Financial Markets Using _Google Trends_"](https://www.nature.com/articles/srep01684?__hstc=113740504.2a1e835c34ab7bf88e972fdd7a7debc8.1424476800061.1424476800062.1424476800063.1&__hssc=113740504.1.1424476800064&__hsfp=3972014050). In this research was found that the search volume for certain (financial) words are linked to the stock price of the Dow Jones Industrial Average stock price, and can in most cases predict a dip in the market. The purpose of this project is to combine this research with machine learning.
-
-## Project Status <a name = "project_status"></a>
-
-This project is currently under development.
-
-## Installation <a name = "installation"></a>
-
-> TODO
-
-## Reflection <a name = "reflection"></a>
-
-> TODO
+The data used is downloaded from [Google Trends](https://trends.google.com). The concept for this project came from research by Tobias Preis, Helen Susannah Moat, and H. Eugene Stanley, ["Quantifying Trading Behavior in Financial Markets Using _Google Trends_"](https://www.nature.com/articles/srep01684?__hstc=113740504.2a1e835c34ab7bf88e972fdd7a7debc8.1424476800061.1424476800062.1424476800063.1&__hssc=113740504.1.1424476800064&__hsfp=3972014050). In this research was found that the search volume for certain (financial) words are linked to the stock price of the Dow Jones Industrial Average stock price, and can in most cases predict a dip in the market. The purpose of this project is to combine this research with machine learning.
 
 ## Results <a name="results"></a>
 
