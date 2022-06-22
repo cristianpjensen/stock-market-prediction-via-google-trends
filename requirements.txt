@@ -7,4 +7,4 @@ yfinance==0.1.54
 jupyter==1.0.0
 xgboost==1.1.0
 scikit-learn==0.23.1
-numpy==1.18.5
+numpy==1.22.0
